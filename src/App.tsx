@@ -6,6 +6,7 @@ import { SelectedWork } from './components/work/SelectedWork';
 import { PolicyLensCaseStudy } from './components/work/PolicyLensCaseStudy';
 import { DormCareCaseStudy } from './components/work/DormCareCaseStudy';
 import { ProductThinking } from './components/thinking/ProductThinking';
+import { AboutSection } from './components/about/AboutSection';
 import { Layout } from './components/layout/Layout';
 import { Section } from './components/layout/Section';
 import { Container } from './components/layout/Container';
@@ -52,12 +53,8 @@ function App() {
         {/* Product Thinking Section */}
         <ProductThinking />
         
-        <Section id="about">
-          <Container>
-            <h2 className="text-metadata" style={{ marginBottom: 'var(--space-32)' }}>About Placeholder</h2>
-            {/* About content will go here in a future milestone */}
-          </Container>
-        </Section>
+        {/* About Section */}
+        <AboutSection />
         
         <Section id="contact">
           <Container>
