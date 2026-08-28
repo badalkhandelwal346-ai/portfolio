@@ -1,0 +1,266 @@
+.project-preview {
+  display: block;
+  width: 100%;
+}
+
+.project-link-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+  text-decoration: none;
+  color: inherit;
+  group: true; /* For potential grouping logic if supported */
+}
+
+/* ----------------------------------------------------------------------
+   TIER LAYOUTS
+   ---------------------------------------------------------------------- */
+
+/* Primary Tier - Dominant visual, editorial layout */
+.tier-primary .project-link-wrapper {
+  gap: var(--space-48);
+}
+
+.tier-primary .project-visual-wrapper {
+  aspect-ratio: 16 / 9;
+}
+
+/* Secondary Tier - Medium visual */
+.tier-secondary .project-visual-wrapper {
+  aspect-ratio: 4 / 3;
+}
+
+/* Tertiary Tier - Minimal list item, no visual */
+.tier-tertiary .project-link-wrapper {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-32) 0;
+  border-bottom: 1px solid var(--color-subtle-border);
+}
+
+/* ----------------------------------------------------------------------
+   VISUAL ARTIFACTS
+   ---------------------------------------------------------------------- */
+.project-visual-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  /* The border creates a subtle framed artifact feel */
+  border: 1px solid var(--color-border);
+  isolation: isolate;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-visual-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface);
+  color: var(--color-muted-text);
+  /* Striped texture for a technical blueprint feel without being cliché */
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    var(--color-subtle-border) 10px,
+    var(--color-subtle-border) 11px
+  );
+}
+
+.placeholder-indicator {
+  background-color: var(--color-page-background);
+  padding: var(--space-16) var(--space-32);
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  border-radius: 2px;
+}
+
+.placeholder-title {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  color: var(--color-primary-text);
+}
+
+.project-visual-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-focus-ring);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  backdrop-filter: blur(2px);
+}
+
+.view-label {
+  color: var(--color-inverse-text);
+  transform: translateY(10px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover Interactions */
+@media (hover: hover) {
+  .project-preview:hover .project-image {
+    transform: scale(1.03);
+  }
+  
+  .project-preview:hover .project-visual-overlay {
+    opacity: 1;
+  }
+  
+  .project-preview:hover .view-label {
+    transform: translateY(0);
+  }
+
+  .tier-tertiary:hover .project-title {
+    color: var(--color-accent);
+  }
+}
+
+/* ----------------------------------------------------------------------
+   CONTENT
+   ---------------------------------------------------------------------- */
+.project-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.tier-tertiary .project-content {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--space-24);
+}
+
+.project-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  color: var(--color-muted-text);
+}
+
+.project-number {
+  color: var(--color-primary-text);
+}
+
+.project-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.tier-primary .project-body {
+  max-width: 600px;
+}
+
+.tier-secondary .project-body {
+  max-width: 500px;
+}
+
+.tier-tertiary .project-body {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-32);
+  flex: 1;
+}
+
+.tier-tertiary .project-title {
+  font-size: var(--text-heading-section);
+  min-width: 180px;
+  transition: color 0.3s ease;
+}
+
+.tier-tertiary .project-description {
+  margin: 0;
+  flex: 1;
+}
+
+.project-title {
+  margin: 0;
+  color: var(--color-primary-text);
+}
+
+.project-description {
+  margin: 0;
+  color: var(--color-secondary-text);
+}
+
+.project-metadata {
+  margin-top: var(--space-8);
+}
+
+.tech-list {
+  color: var(--color-muted-text);
+}
+
+.tertiary-explore {
+  color: var(--color-secondary-text);
+  flex-shrink: 0;
+}
+
+/* ----------------------------------------------------------------------
+   REDUCED MOTION
+   ---------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .project-image,
+  .project-visual-overlay,
+  .view-label,
+  .project-title {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ----------------------------------------------------------------------
+   RESPONSIVE ADJUSTMENTS
+   ---------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .tier-primary .project-link-wrapper,
+  .tier-secondary .project-link-wrapper {
+    gap: var(--space-24);
+  }
+
+  .tier-tertiary .project-link-wrapper {
+    padding: var(--space-24) 0;
+  }
+
+  .tier-tertiary .project-content,
+  .tier-tertiary .project-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-8);
+  }
+  
+  .tier-tertiary .project-title {
+    font-size: var(--text-heading-section);
+  }
+  
+  .tertiary-explore {
+    display: none; /* Keep mobile minimal */
+  }
+
+  .project-title {
+    font-size: var(--text-heading-section);
+  }
+  
+  .tier-primary .project-title {
+    font-size: 2.25rem; /* Slightly larger for primary on mobile but controlled */
+  }
+}

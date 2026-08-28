@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ThemeProvider } from './theme/ThemeContext';
 import { IntroExperience } from './components/intro/IntroExperience';
 import { Hero } from './components/hero/Hero';
+import { SelectedWork } from './components/work/SelectedWork';
 import { Layout } from './components/layout/Layout';
 import { Section } from './components/layout/Section';
 import { Container } from './components/layout/Container';
@@ -19,13 +20,8 @@ function App() {
         {/* Hero acts as the primary content anchored to the viewport top */}
         <Hero introPhase={introPhase} />
         
-        {/* Placeholders for future sections */}
-        <Section id="work">
-          <Container>
-            <h2 className="text-metadata" style={{ marginBottom: 'var(--space-32)' }}>Work Placeholder</h2>
-            {/* Project cards will go here in a future milestone */}
-          </Container>
-        </Section>
+        {/* Selected Work Section */}
+        <SelectedWork />
 
         <Section id="about">
           <Container>
