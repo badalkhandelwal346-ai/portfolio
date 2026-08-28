@@ -1,17 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './IntroExperience.css';
 
-// The portrait asset placeholder config.
-// The image will be added later by the user in the public directory.
-const PORTRAIT_CONFIG = {
-  src: '', // Leave blank so the placeholder renders
-  alt: 'Badal Khandelwal',
-  hasAsset: false // Change to true when real asset is provided
-};
-
-export const IntroExperience: React.FC = () => {
-  const [phase, setPhase] = useState<'initial' | 'coding' | 'transitioning' | 'complete'>('initial');
-
+export const IntroExperience: React.FC<{ phase: string; setPhase: (phase: any) => void }> = ({ phase, setPhase }) => {
   useEffect(() => {
     // Respect reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -28,7 +18,7 @@ export const IntroExperience: React.FC = () => {
     // Timing sequence for the intro experience
     const timers = [
       setTimeout(() => setPhase('coding'), 100),
-      // Wait for typing animation to complete (approx 1.5s for the short lines)
+      // Wait for typing animation to complete
       setTimeout(() => setPhase('transitioning'), 2000),
       // Resolve to final state
       setTimeout(() => {
@@ -38,7 +28,9 @@ export const IntroExperience: React.FC = () => {
     ];
 
     return () => timers.forEach(clearTimeout);
-  }, []);
+  }, [setPhase]);
+
+  // We keep it mounted but hidden to allow smooth transitions via CSS opacity.
 
   return (
     <div className={`intro-experience phase-${phase}`} aria-hidden={phase === 'complete'}>
@@ -51,23 +43,6 @@ export const IntroExperience: React.FC = () => {
           <div className="code-line line-2">
             builder.<span className="method">initialize</span>();<span className="cursor"></span>
           </div>
-        </div>
-      </div>
-
-      {/* PORTRAIT LAYER */}
-      <div className="intro-portrait-layer">
-        <div className="portrait-container">
-          {PORTRAIT_CONFIG.hasAsset && PORTRAIT_CONFIG.src ? (
-            <img 
-              src={PORTRAIT_CONFIG.src} 
-              alt={PORTRAIT_CONFIG.alt}
-              className="portrait-image"
-            />
-          ) : (
-            <div className="portrait-placeholder">
-              <span className="text-metadata">PORTRAIT ASSET</span>
-            </div>
-          )}
         </div>
       </div>
     </div>

@@ -1,15 +1,23 @@
+import { useState } from 'react';
 import { ThemeProvider } from './theme/ThemeContext';
 import { IntroExperience } from './components/intro/IntroExperience';
+import { Hero } from './components/hero/Hero';
 import { Layout } from './components/layout/Layout';
 import { Section } from './components/layout/Section';
 import { Container } from './components/layout/Container';
 import './index.css';
 
 function App() {
+  const [introPhase, setIntroPhase] = useState<'initial' | 'coding' | 'transitioning' | 'complete'>('initial');
+
   return (
     <ThemeProvider>
       <Layout>
-        <IntroExperience />
+        {/* Intro is an absolute overlay that fades out once complete */}
+        <IntroExperience phase={introPhase} setPhase={setIntroPhase} />
+        
+        {/* Hero acts as the primary content anchored to the viewport top */}
+        <Hero introPhase={introPhase} />
         
         {/* Placeholders for future sections */}
         <Section id="work">

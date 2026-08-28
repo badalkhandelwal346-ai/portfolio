@@ -1,12 +1,21 @@
 .intro-experience {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
   width: 100%;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* Intro takes full screen but resolves to being part of the document flow */
+  background-color: var(--color-page-background);
+  transition: opacity 1s cubic-bezier(0.2, 0, 0, 1) 0.5s;
+}
+
+.intro-experience.phase-complete {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ----------------------------------------------------------------------
