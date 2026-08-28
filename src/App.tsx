@@ -4,6 +4,7 @@ import { IntroExperience } from './components/intro/IntroExperience';
 import { Hero } from './components/hero/Hero';
 import { SelectedWork } from './components/work/SelectedWork';
 import { PolicyLensCaseStudy } from './components/work/PolicyLensCaseStudy';
+import { DormCareCaseStudy } from './components/work/DormCareCaseStudy';
 import { ProductThinking } from './components/thinking/ProductThinking';
 import { Layout } from './components/layout/Layout';
 import { Section } from './components/layout/Section';
@@ -23,8 +24,17 @@ function App() {
     return () => window.removeEventListener('popstate', handleLocationChange);
   }, []);
 
+  // Scroll to top when the route changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPath]);
+
   if (currentPath === '/work/policylens') {
     return <PolicyLensCaseStudy />;
+  }
+
+  if (currentPath === '/work/dormcare') {
+    return <DormCareCaseStudy />;
   }
 
   return (

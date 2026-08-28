@@ -9,17 +9,19 @@ interface ProjectPreviewProps {
 export const ProjectPreview: React.FC<ProjectPreviewProps> = ({ project }) => {
   const { number, title, category, description, tier, technologies, liveUrl, imageSrc, caseStudyUrl } = project;
 
-  // The destination link. If liveUrl exists, use it. Else if caseStudyUrl exists, use it. Otherwise, use placeholder hash.
-  const href = liveUrl || caseStudyUrl || `#project-${project.id}`;
+  // The destination link. If caseStudyUrl exists, prioritize it. Otherwise use liveUrl, or a placeholder hash.
+  const href = caseStudyUrl || liveUrl || `#project-${project.id}`;
   
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    // If it's a local route (caseStudyUrl) and no modifier keys are pressed, handle client-side
-    if (caseStudyUrl && !liveUrl && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+    // If it's a local route (caseStudyUrl) and no modifier keys are pressed, handle client-side navigation
+    if (caseStudyUrl && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
       e.preventDefault();
       window.history.pushState({}, '', caseStudyUrl);
       window.dispatchEvent(new PopStateEvent('popstate'));
     }
   };
+
+  const isExternalLiveUrl = !caseStudyUrl && liveUrl;
 
   return (
     <article className={`project-preview tier-${tier}`}>
@@ -27,8 +29,8 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({ project }) => {
         href={href} 
         onClick={handleClick}
         className="project-link-wrapper" 
-        target={liveUrl ? "_blank" : "_self"} 
-        rel={liveUrl ? "noopener noreferrer" : ""}
+        target={isExternalLiveUrl ? "_blank" : "_self"} 
+        rel={isExternalLiveUrl ? "noopener noreferrer" : ""}
       >
         
         {/* Visual Artifact */}

@@ -41,6 +41,7 @@ export const projectsData: Project[] = [
     description: 'Helping students book cleaning and report maintenance without the usual hassle.',
     tier: 'secondary',
     liveUrl: 'https://dorm-care2.vercel.app/',
+    caseStudyUrl: '/work/dormcare',
     technologies: ['React'],
   },
   {

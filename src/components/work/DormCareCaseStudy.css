@@ -1,0 +1,360 @@
+.case-study-hero {
+  padding-top: var(--space-96);
+  padding-bottom: var(--space-64);
+  background-color: var(--color-page-background);
+}
+
+.case-study-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  max-width: 800px;
+}
+
+.case-study-label {
+  color: var(--color-primary-text);
+}
+
+.case-study-title {
+  margin: 0;
+  color: var(--color-primary-text);
+}
+
+.case-study-subtitle {
+  margin: 0;
+  color: var(--color-secondary-text);
+}
+
+.case-study-metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-48);
+  margin-top: var(--space-48);
+  padding-top: var(--space-32);
+  border-top: 1px solid var(--color-subtle-border);
+}
+
+.metadata-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.metadata-label {
+  color: var(--color-muted-text);
+}
+
+.metadata-value {
+  color: var(--color-primary-text);
+  font-weight: 500;
+}
+
+/* ----------------------------------------------------------------------
+   SECTION STRUCTURE
+   ---------------------------------------------------------------------- */
+.case-study-section {
+  padding-top: var(--space-96);
+  padding-bottom: var(--space-96);
+}
+
+.alt-bg {
+  background-color: var(--color-surface);
+}
+
+.case-study-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: var(--space-64);
+}
+
+.grid-sidebar {
+  position: relative;
+}
+
+.section-number {
+  position: sticky;
+  top: 100px;
+  color: var(--color-muted-text);
+  margin: 0;
+}
+
+.grid-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  max-width: 650px;
+}
+
+.section-title {
+  margin: 0;
+  color: var(--color-primary-text);
+  margin-bottom: var(--space-16);
+}
+
+.emphasis {
+  font-weight: 500;
+  color: var(--color-primary-text);
+}
+
+/* ----------------------------------------------------------------------
+   SPECIFIC COMPONENTS
+   ---------------------------------------------------------------------- */
+
+.context-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-16);
+}
+
+.context-arrow {
+  color: var(--color-muted-text);
+  margin-left: var(--space-16);
+}
+
+.emphasis-box {
+  background-color: var(--color-page-background);
+  border: 1px solid var(--color-border);
+  padding: var(--space-24) var(--space-32);
+  border-radius: 4px;
+  margin-top: var(--space-16);
+}
+
+.idea-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding-left: var(--space-24);
+  margin: var(--space-16) 0;
+}
+
+/* Horizontal Service Flow */
+.service-flow-diagram {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-16);
+  background-color: var(--color-page-background);
+  padding: var(--space-32);
+  border: 1px dashed var(--color-border);
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: var(--text-metadata);
+  font-weight: 500;
+  color: var(--color-secondary-text);
+}
+
+.flow-node.highlight {
+  color: var(--color-primary-text);
+  background-color: var(--color-surface);
+  padding: var(--space-8) var(--space-16);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+.flow-arrow {
+  color: var(--color-muted-text);
+}
+
+/* UX Decisions */
+.ux-decision {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  margin-bottom: var(--space-24);
+}
+
+.ux-decision h4 {
+  margin: 0;
+  color: var(--color-primary-text);
+}
+
+.ux-decision p {
+  margin: 0;
+  color: var(--color-secondary-text);
+}
+
+/* Workflow Sections (07 & 08) */
+.workflow-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-64);
+  align-items: center;
+  margin-bottom: var(--space-96);
+}
+
+.workflow-section.reverse {
+  grid-template-columns: 1fr 1fr;
+  direction: rtl; /* simple way to reverse DOM visually without altering order */
+}
+
+.workflow-section.reverse > * {
+  direction: ltr;
+}
+
+.workflow-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+}
+
+.workflow-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.workflow-step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.workflow-step strong {
+  color: var(--color-primary-text);
+  font-size: var(--text-metadata);
+  letter-spacing: 0.05em;
+}
+
+.workflow-step p {
+  margin: 0;
+  color: var(--color-secondary-text);
+}
+
+.workflow-visual {
+  width: 100%;
+}
+
+.visual-placeholder {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-48);
+  gap: var(--space-16);
+  color: var(--color-muted-text);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    var(--color-subtle-border) 10px,
+    var(--color-subtle-border) 11px
+  );
+}
+
+/* Concept Before/After */
+.before-after-concept {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-24);
+  background-color: var(--color-page-background);
+  padding: var(--space-32);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  margin: var(--space-32) 0;
+}
+
+.concept-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  flex: 1;
+}
+
+.concept-side.highlight p {
+  color: var(--color-primary-text);
+  font-weight: 500;
+}
+
+.concept-arrow {
+  color: var(--color-muted-text);
+  font-size: 24px;
+}
+
+.numbered-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding-left: var(--space-24);
+  color: var(--color-secondary-text);
+}
+
+.bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding-left: var(--space-24);
+  color: var(--color-secondary-text);
+}
+
+/* Footer Nav */
+.case-study-footer {
+  padding-top: var(--space-96);
+  padding-bottom: var(--space-96);
+  border-top: 1px solid var(--color-subtle-border);
+}
+
+.back-link {
+  text-decoration: none;
+  color: var(--color-secondary-text);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 4px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.back-link:hover {
+  color: var(--color-primary-text);
+  border-color: var(--color-primary-text);
+}
+
+/* ----------------------------------------------------------------------
+   RESPONSIVE ADJUSTMENTS
+   ---------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .case-study-grid {
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-48);
+  }
+}
+
+@media (max-width: 768px) {
+  .case-study-hero,
+  .case-study-section {
+    padding-top: var(--space-64);
+    padding-bottom: var(--space-64);
+  }
+
+  .case-study-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-32);
+  }
+
+  .section-number {
+    position: static;
+    margin-bottom: var(--space-8);
+  }
+
+  .workflow-section,
+  .workflow-section.reverse {
+    grid-template-columns: 1fr;
+    direction: ltr; /* Reset reverse trick on mobile */
+    gap: var(--space-48);
+  }
+
+  .before-after-concept {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .concept-arrow {
+    transform: rotate(90deg);
+    align-self: center;
+  }
+}
