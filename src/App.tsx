@@ -6,6 +6,7 @@ import { SelectedWork } from './components/work/SelectedWork';
 import { PolicyLensCaseStudy } from './components/work/PolicyLensCaseStudy';
 import { DormCareCaseStudy } from './components/work/DormCareCaseStudy';
 import { ProductThinking } from './components/thinking/ProductThinking';
+import { PerspectiveSection } from './components/about/PerspectiveSection';
 import { AboutSection } from './components/about/AboutSection';
 import { Layout } from './components/layout/Layout';
 import { Section } from './components/layout/Section';
@@ -52,6 +53,9 @@ function App() {
 
         {/* Product Thinking Section */}
         <ProductThinking />
+        
+        {/* Perspective Section */}
+        <PerspectiveSection />
         
         {/* About Section */}
         <AboutSection />

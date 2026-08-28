@@ -1,0 +1,107 @@
+.perspective-section {
+  padding-top: var(--space-128);
+  padding-bottom: var(--space-128);
+  background-color: var(--color-page-background);
+  border-top: 1px solid var(--color-border);
+}
+
+.perspective-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: var(--space-64);
+}
+
+.perspective-sidebar {
+  position: relative;
+}
+
+.perspective-label {
+  color: var(--color-muted-text);
+  margin: 0;
+  position: sticky;
+  top: 100px;
+}
+
+.perspective-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+}
+
+.perspective-statement {
+  color: var(--color-primary-text);
+  margin: 0 0 var(--space-32) 0;
+  max-width: 100%;
+  line-height: 1.2;
+}
+
+.perspective-intro {
+  color: var(--color-secondary-text);
+  margin: 0 0 var(--space-64) 0;
+  max-width: 650px;
+}
+
+/* ----------------------------------------------------------------------
+   AREAS GRID
+   ---------------------------------------------------------------------- */
+.perspective-areas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-64) var(--space-48);
+}
+
+.perspective-area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding-top: var(--space-24);
+  border-top: 1px solid var(--color-subtle-border);
+  transition: border-color 0.3s ease;
+}
+
+.perspective-area:hover {
+  border-top-color: var(--color-border);
+}
+
+.area-title {
+  color: var(--color-primary-text);
+  margin: 0;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.area-desc {
+  color: var(--color-secondary-text);
+  margin: 0;
+}
+
+/* ----------------------------------------------------------------------
+   RESPONSIVE ADJUSTMENTS
+   ---------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .perspective-grid {
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-48);
+  }
+}
+
+@media (max-width: 768px) {
+  .perspective-section {
+    padding-top: var(--space-96);
+    padding-bottom: var(--space-96);
+  }
+
+  .perspective-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-48);
+  }
+
+  .perspective-label {
+    position: static;
+  }
+
+  .perspective-areas {
+    grid-template-columns: 1fr;
+    gap: var(--space-48);
+  }
+}
