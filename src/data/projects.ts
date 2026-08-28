@@ -21,6 +21,7 @@ export const projectsData: Project[] = [
     category: 'PRODUCT / AI',
     description: 'Turning fragmented government policies into information people can actually use.',
     tier: 'primary',
+    caseStudyUrl: '/work/policylens',
     technologies: ['Next.js', 'React', 'TypeScript', 'Google Gemini'],
   },
   {

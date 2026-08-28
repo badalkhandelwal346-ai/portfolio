@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ThemeProvider } from './theme/ThemeContext';
 import { IntroExperience } from './components/intro/IntroExperience';
 import { Hero } from './components/hero/Hero';
 import { SelectedWork } from './components/work/SelectedWork';
+import { PolicyLensCaseStudy } from './components/work/PolicyLensCaseStudy';
+import { ProductThinking } from './components/thinking/ProductThinking';
 import { Layout } from './components/layout/Layout';
 import { Section } from './components/layout/Section';
 import { Container } from './components/layout/Container';
@@ -10,6 +12,20 @@ import './index.css';
 
 function App() {
   const [introPhase, setIntroPhase] = useState<'initial' | 'coding' | 'transitioning' | 'complete'>('initial');
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentPath(window.location.pathname);
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
+
+  if (currentPath === '/work/policylens') {
+    return <PolicyLensCaseStudy />;
+  }
 
   return (
     <ThemeProvider>
@@ -23,12 +39,8 @@ function App() {
         {/* Selected Work Section */}
         <SelectedWork />
 
-        <Section id="about">
-          <Container>
-            <h2 className="text-metadata" style={{ marginBottom: 'var(--space-32)' }}>About Placeholder</h2>
-            {/* About content will go here in a future milestone */}
-          </Container>
-        </Section>
+        {/* Product Thinking Section */}
+        <ProductThinking />
         
         <Section id="contact">
           <Container>
