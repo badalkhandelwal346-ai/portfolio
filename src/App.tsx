@@ -52,6 +52,13 @@ function App() {
         {/* Product Thinking Section */}
         <ProductThinking />
         
+        <Section id="about">
+          <Container>
+            <h2 className="text-metadata" style={{ marginBottom: 'var(--space-32)' }}>About Placeholder</h2>
+            {/* About content will go here in a future milestone */}
+          </Container>
+        </Section>
+        
         <Section id="contact">
           <Container>
             <h2 className="text-metadata" style={{ marginBottom: 'var(--space-32)' }}>Contact Placeholder</h2>
