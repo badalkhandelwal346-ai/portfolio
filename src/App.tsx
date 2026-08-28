@@ -8,9 +8,8 @@ import { DormCareCaseStudy } from './components/work/DormCareCaseStudy';
 import { ProductThinking } from './components/thinking/ProductThinking';
 import { PerspectiveSection } from './components/about/PerspectiveSection';
 import { AboutSection } from './components/about/AboutSection';
+import { ContactSection } from './components/contact/ContactSection';
 import { Layout } from './components/layout/Layout';
-import { Section } from './components/layout/Section';
-import { Container } from './components/layout/Container';
 import './index.css';
 
 function App() {
@@ -60,12 +59,8 @@ function App() {
         {/* About Section */}
         <AboutSection />
         
-        <Section id="contact">
-          <Container>
-            <h2 className="text-metadata" style={{ marginBottom: 'var(--space-32)' }}>Contact Placeholder</h2>
-            {/* Contact content will go here in a future milestone */}
-          </Container>
-        </Section>
+        {/* Contact & Footer Section */}
+        <ContactSection />
       </Layout>
     </ThemeProvider>
   );
