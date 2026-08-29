@@ -17,8 +17,12 @@ export const Navigation: React.FC = () => {
       if (isTargetHome) {
         if (!isCurrentlyHome) {
           // We are on a case study, go back to home via SPA pushState
-          window.history.pushState({}, '', '/');
-          window.dispatchEvent(new PopStateEvent('popstate'));
+          const targetUrl = hash ? `/#${hash}` : '/';
+          window.history.pushState({}, '', targetUrl);
+          window.dispatchEvent(new Event('navigate'));
+        } else if (hash) {
+          // We are already home, but we should update the URL bar to include the hash
+          window.history.pushState({}, '', `/#${hash}`);
         }
         
         // Let React re-render home page (if we were away), then scroll

@@ -17,24 +17,37 @@ function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
   useEffect(() => {
-    const handleLocationChange = () => {
+    const handlePopState = () => {
       setCurrentPath(window.location.pathname);
+      // Let the browser handle scroll restoration naturally
     };
 
-    window.addEventListener('popstate', handleLocationChange);
-    return () => window.removeEventListener('popstate', handleLocationChange);
+    const handleCustomNavigate = () => {
+      setCurrentPath(window.location.pathname);
+      // Programmatic navigation scrolls to top by default
+      if (!window.location.hash) {
+        window.scrollTo(0, 0);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('navigate', handleCustomNavigate);
+    
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('navigate', handleCustomNavigate);
+    };
   }, []);
 
-  // Scroll to top when the route changes
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [currentPath]);
+  const normalizedPath = currentPath.endsWith('/') && currentPath.length > 1 
+    ? currentPath.slice(0, -1) 
+    : currentPath;
 
-  if (currentPath === '/work/policylens') {
+  if (normalizedPath === '/work/policylens') {
     return <PolicyLensCaseStudy />;
   }
 
-  if (currentPath === '/work/dormcare') {
+  if (normalizedPath === '/work/dormcare') {
     return <DormCareCaseStudy />;
   }
 

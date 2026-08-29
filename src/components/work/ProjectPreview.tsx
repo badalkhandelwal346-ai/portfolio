@@ -17,14 +17,14 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({ project }) => {
     if (caseStudyUrl && e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey) {
       e.preventDefault();
       window.history.pushState({}, '', caseStudyUrl);
-      window.dispatchEvent(new PopStateEvent('popstate'));
+      window.dispatchEvent(new Event('navigate'));
     }
   };
 
   const isExternalLiveUrl = !caseStudyUrl && liveUrl;
 
   return (
-    <article className={`project-preview tier-${tier}`}>
+    <article id={`project-${project.id}`} className={`project-preview tier-${tier}`}>
       <a 
         href={href} 
         onClick={handleClick}

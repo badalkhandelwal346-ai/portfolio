@@ -177,7 +177,7 @@ export const PolicyLensCaseStudy: React.FC = () => {
                   if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey) {
                     e.preventDefault();
                     window.history.pushState({}, '', '/');
-                    window.dispatchEvent(new PopStateEvent('popstate'));
+                    window.dispatchEvent(new Event('navigate'));
                   }
                 }}
               >
