@@ -10,12 +10,12 @@ export const DormCareCaseStudy: React.FC = () => {
     <ThemeProvider>
       <Layout>
         
-        {/* 01 OVERVIEW */}
+        {/* 00 OVERVIEW / HERO */}
         <Section className="case-study-hero">
           <Container isEditorial>
             <div className="case-study-header">
-              <span className="text-metadata case-study-label">03 / PRODUCT & FRONTEND</span>
-              <h1 className="text-display case-study-title">DORMCARE</h1>
+              <span className="text-metadata case-study-label">02 / PRODUCT & FRONTEND</span>
+              <h1 className="text-display case-study-title">DormCare</h1>
               <p className="text-heading-section case-study-subtitle">
                 Student Services, Simplified.
               </p>
@@ -27,7 +27,7 @@ export const DormCareCaseStudy: React.FC = () => {
                 </div>
                 <div className="metadata-item">
                   <span className="text-metadata metadata-label">TYPE</span>
-                  <span className="text-body metadata-value">Product Concept / Frontend Prototype</span>
+                  <span className="text-body metadata-value">Service Prototype</span>
                 </div>
                 <div className="metadata-item">
                   <span className="text-metadata metadata-label">TECHNOLOGY</span>
@@ -35,7 +35,7 @@ export const DormCareCaseStudy: React.FC = () => {
                 </div>
                 <div className="metadata-item">
                   <span className="text-metadata metadata-label">FOCUS</span>
-                  <span className="text-body metadata-value">Service Design / UX / Product Thinking</span>
+                  <span className="text-body metadata-value">Service Design / UX / Task Flow</span>
                 </div>
               </div>
               
@@ -63,45 +63,75 @@ export const DormCareCaseStudy: React.FC = () => {
           </Container>
         </Section>
 
-        {/* 02 THE PROBLEM */}
+        {/* 01 THE PROBLEM */}
         <Section className="case-study-section">
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">02 THE PROBLEM</h2>
+                <h2 className="text-metadata section-number">01 / THE PROBLEM</h2>
               </div>
               <div className="grid-content">
-                <h3 className="text-heading-large section-title">Students have demanding class schedules.</h3>
+                <h3 className="text-heading-large section-title">Everyday maintenance is deeply fragmented.</h3>
                 <p className="text-body">
-                  When students are busy, rooms may not get cleaned regularly, small maintenance issues can become annoying, and finding the right person to solve the problem can take unnecessary effort.
+                  When a student needs their room cleaned, a plumbing issue fixed, or general maintenance help, the process is rarely unified. Finding the appropriate person, explaining the issue, arranging the service, and knowing what happens next creates unnecessary friction in a student's already busy schedule.
                 </p>
                 <p className="text-body emphasis">
-                  The product opportunity: Make requesting help as simple as possible.
+                  The product hypothesis: Students have the need, and staff have the capability, but the connecting tissue between them is broken.
                 </p>
               </div>
             </div>
           </Container>
         </Section>
 
-        {/* 03 THE USER CONTEXT */}
+        {/* 02 THE PRODUCT QUESTION */}
         <Section className="case-study-section alt-bg">
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">03 THE USER CONTEXT</h2>
+                <h2 className="text-metadata section-number">02 / PRODUCT QUESTION</h2>
               </div>
               <div className="grid-content">
-                <div className="context-flow">
-                  <div className="context-step text-body">CLASS (9:00 AM)</div>
-                  <div className="context-arrow">↓</div>
-                  <div className="context-step text-body">LECTURES / WORK</div>
-                  <div className="context-arrow">↓</div>
-                  <div className="context-step text-body">6:00 PM</div>
-                  <div className="context-arrow">↓</div>
-                  <div className="context-step text-body">ROOM / MAINTENANCE NEED</div>
-                  <div className="context-arrow">↓</div>
-                  <div className="context-step emphasis-box text-heading-section">
-                    "I DON'T HAVE TIME TO DEAL WITH THIS"
+                <h3 className="text-heading-large section-title">
+                  How might we make everyday dorm maintenance as simple as requesting a digital service?
+                </h3>
+                <p className="text-body">
+                  The goal was reducing the cognitive load and friction between "I have a problem" and "I have a person handling it."
+                </p>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* 03 USERS AND SERVICE SYSTEM */}
+        <Section className="case-study-section">
+          <Container isEditorial>
+            <div className="case-study-grid">
+              <div className="grid-sidebar">
+                <h2 className="text-metadata section-number">03 / SERVICE SYSTEM</h2>
+              </div>
+              <div className="grid-content">
+                <p className="text-body">
+                  DormCare is a two-sided platform. While the frontend prototype focuses on the student experience, the architecture was designed with the entire service loop in mind.
+                </p>
+                
+                <div className="service-system-container" style={{ display: 'flex', gap: 'var(--space-32)', marginTop: 'var(--space-32)', flexWrap: 'wrap' }}>
+                  <div className="system-side" style={{ flex: '1 1 250px', padding: 'var(--space-24)', backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '4px' }}>
+                    <h4 className="text-metadata">PRIMARY USER: STUDENT</h4>
+                    <ul className="text-body" style={{ marginTop: 'var(--space-16)', paddingLeft: 'var(--space-16)' }}>
+                      <li>Simple request creation</li>
+                      <li>Clear service categories</li>
+                      <li>Minimal cognitive effort</li>
+                      <li>Visibility into the request</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="system-side" style={{ flex: '1 1 250px', padding: 'var(--space-24)', backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '4px' }}>
+                    <h4 className="text-metadata">SERVICE PROVIDER: STAFF</h4>
+                    <ul className="text-body" style={{ marginTop: 'var(--space-16)', paddingLeft: 'var(--space-16)' }}>
+                      <li>Clear, structured request information</li>
+                      <li>Understandable service type</li>
+                      <li>Ability to fulfill the request quickly</li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -109,25 +139,20 @@ export const DormCareCaseStudy: React.FC = () => {
           </Container>
         </Section>
 
-        {/* 04 THE PRODUCT IDEA */}
-        <Section className="case-study-section">
+        {/* 04 KEY PRODUCT DECISION */}
+        <Section className="case-study-section alt-bg">
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">04 THE PRODUCT IDEA</h2>
+                <h2 className="text-metadata section-number">04 / KEY DECISION</h2>
               </div>
               <div className="grid-content">
-                <h3 className="text-heading-large section-title">Start with the need, not the department.</h3>
+                <h3 className="text-heading-large section-title">Task-oriented entry points.</h3>
                 <p className="text-body">
-                  Instead of making students figure out <em>"Who do I contact?"</em>, DormCare lets them start with <em>"What do I need?"</em>
+                  The strongest product decision was elevating the two primary tasks directly to the forefront: <strong>Book a Cleaner</strong> and <strong>Report a Maintenance Problem</strong>.
                 </p>
-                <ul className="text-body idea-list">
-                  <li>Need cleaning? → <strong>Book a cleaner.</strong></li>
-                  <li>Something broken? → <strong>Report a maintenance problem.</strong></li>
-                  <li>Need another service? → <strong>Choose the relevant service category.</strong></li>
-                </ul>
-                <p className="text-body emphasis">
-                  Organize the experience around the user's problem, not the internal service organization.
+                <p className="text-body">
+                  Rather than forcing a student to understand the entire service catalog or navigate internal departments (e.g., "Facilities" vs "Janitorial"), the interface uses task-oriented design. Need cleaning? Book a cleaner. Something is broken? Report the problem. This drastically reduces the time to action.
                 </p>
               </div>
             </div>
@@ -139,221 +164,131 @@ export const DormCareCaseStudy: React.FC = () => {
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">05 SERVICE FLOW</h2>
+                <h2 className="text-metadata section-number">05 / SERVICE FLOW</h2>
               </div>
               <div className="grid-content">
-                <div className="service-flow-diagram">
-                  <span className="flow-node">STUDENT</span>
-                  <span className="flow-arrow">→</span>
-                  <span className="flow-node">SELECT NEED</span>
-                  <span className="flow-arrow">→</span>
-                  <span className="flow-node">PROVIDE DETAILS</span>
-                  <span className="flow-arrow">→</span>
-                  <span className="flow-node">REQUEST SERVICE</span>
-                  <span className="flow-arrow">→</span>
-                  <span className="flow-node">WORKER / SERVICE</span>
-                  <span className="flow-arrow">→</span>
-                  <span className="flow-node highlight">RESOLUTION</span>
+                <div className="service-flow-diagram" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)', margin: 'var(--space-32) 0' }}>
+                  <div style={{ backgroundColor: 'var(--color-page-background)', border: '1px solid var(--color-border)', padding: 'var(--space-16)', textAlign: 'center', borderRadius: '4px', fontWeight: 500 }}>STUDENT</div>
+                  <div style={{ textAlign: 'center', color: 'var(--color-muted-text)' }}>↓</div>
+                  <div style={{ backgroundColor: 'var(--color-page-background)', border: '1px solid var(--color-border)', padding: 'var(--space-16)', textAlign: 'center', borderRadius: '4px', fontWeight: 500 }}>SELECT SERVICE</div>
+                  <div style={{ textAlign: 'center', color: 'var(--color-muted-text)' }}>↓</div>
+                  <div style={{ backgroundColor: 'var(--color-page-background)', border: '1px solid var(--color-border)', padding: 'var(--space-16)', textAlign: 'center', borderRadius: '4px', fontWeight: 500 }}>DESCRIBE / REQUEST</div>
+                  <div style={{ textAlign: 'center', color: 'var(--color-muted-text)' }}>↓</div>
+                  <div style={{ backgroundColor: 'var(--color-page-background)', border: '1px dashed var(--color-border)', padding: 'var(--space-16)', textAlign: 'center', borderRadius: '4px', fontWeight: 500, color: 'var(--color-secondary-text)' }}>REQUEST RECEIVED (SYSTEM)</div>
+                  <div style={{ textAlign: 'center', color: 'var(--color-muted-text)' }}>↓</div>
+                  <div style={{ backgroundColor: 'var(--color-page-background)', border: '1px dashed var(--color-border)', padding: 'var(--space-16)', textAlign: 'center', borderRadius: '4px', fontWeight: 500, color: 'var(--color-secondary-text)' }}>SERVICE FULFILLED (PROVIDER)</div>
                 </div>
+                <p className="text-metadata" style={{ textAlign: 'center', color: 'var(--color-muted-text)' }}>
+                  *Dashed steps indicate the backend/provider workflow required to close the loop.
+                </p>
               </div>
             </div>
           </Container>
         </Section>
 
-        {/* 06 KEY UX DECISIONS */}
+        {/* 06 UX DECISIONS */}
         <Section className="case-study-section alt-bg">
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">06 KEY UX DECISIONS</h2>
+                <h2 className="text-metadata section-number">06 / UX DECISIONS</h2>
               </div>
               <div className="grid-content">
-                <div className="ux-decision">
-                  <h4 className="text-heading-section">1. Start with the user's need.</h4>
-                  <p className="text-body">Instead of <em>"Which department do you need?"</em>, use <em>"What do you need help with?"</em></p>
-                </div>
-                <div className="ux-decision">
-                  <h4 className="text-heading-section">2. Prioritize the two most important actions.</h4>
-                  <p className="text-body"><strong>BOOK A CLEANER</strong> and <strong>REPORT A MAINTENANCE PROBLEM</strong> receive stronger visual hierarchy.</p>
-                </div>
-                <div className="ux-decision">
-                  <h4 className="text-heading-section">3. Reduce friction.</h4>
-                  <p className="text-body">A student who is already busy should not need to navigate through a complicated process just to request help.</p>
-                </div>
-                <div className="ux-decision">
-                  <h4 className="text-heading-section">4. Keep service categories understandable.</h4>
-                  <p className="text-body">Plumbing, carpentry, cleaning, etc. should be understandable as services rather than technical internal categories.</p>
+                <div className="ux-decisions" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-48)' }}>
+                  
+                  <div className="ux-decision" style={{ borderLeft: '2px solid var(--color-subtle-border)', paddingLeft: 'var(--space-24)' }}>
+                    <h4 className="text-metadata">PROBLEM: ROUTING ISSUES ACCURATELY</h4>
+                    <p className="text-body" style={{ marginTop: 'var(--space-12)' }}>
+                      <strong>Decision:</strong> Using explicit, human-readable service categories (e.g., Plumbing, Carpentry) during the reporting flow.<br/>
+                      <strong>Why:</strong> It forces the user to loosely categorize their own problem, reducing the triage burden on the backend service team while keeping the terminology accessible to students.
+                    </p>
+                  </div>
+
+                  <div className="ux-decision" style={{ borderLeft: '2px solid var(--color-subtle-border)', paddingLeft: 'var(--space-24)' }}>
+                    <h4 className="text-metadata">PROBLEM: COGNITIVE OVERLOAD</h4>
+                    <p className="text-body" style={{ marginTop: 'var(--space-12)' }}>
+                      <strong>Decision:</strong> Splitting the primary UI strictly into two massive, unmissable entry points.<br/>
+                      <strong>Why:</strong> A student who is already late for class shouldn't have to scan a dense dashboard of options. The UI reflects the immediate urgency of the user's context.
+                    </p>
+                  </div>
+
                 </div>
               </div>
             </div>
           </Container>
         </Section>
 
-        {/* 07 & 08 CORE WORKFLOWS WITH VISUALS */}
+        {/* 07 DESIGN VS PRODUCT THINKING */}
         <Section className="case-study-section">
           <Container isEditorial>
-            
-            {/* BOOK A CLEANER */}
-            <div className="workflow-section">
-              <div className="workflow-text">
-                <h2 className="text-metadata section-number">07 BOOK A CLEANER</h2>
-                <div className="workflow-breakdown text-body">
-                  <div className="workflow-step">
-                    <strong>PROBLEM</strong>
-                    <p>"I need my room cleaned, but I don't have enough time."</p>
-                  </div>
-                  <div className="workflow-step">
-                    <strong>ACTION</strong>
-                    <p>Book a Cleaner</p>
-                  </div>
-                  <div className="workflow-step">
-                    <strong>DETAILS</strong>
-                    <p>Collect only the information necessary for the request.</p>
-                  </div>
-                  <div className="workflow-step">
-                    <strong>REQUEST</strong>
-                    <p>Submit the service request.</p>
-                  </div>
-                </div>
+            <div className="case-study-grid">
+              <div className="grid-sidebar">
+                <h2 className="text-metadata section-number">07 / DESIGN VS PRODUCT</h2>
               </div>
-              <div className="workflow-visual">
-                <div className="visual-placeholder">
-                  <span className="text-metadata">BOOK A CLEANER INTERFACE</span>
-                  <span className="text-small">Prioritizing the two most common actions reduces the time needed to decide what to do next.</span>
-                </div>
+              <div className="grid-content">
+                <h3 className="text-heading-large section-title">Designing around a service model.</h3>
+                <p className="text-body">
+                  While the interface utilizes clean typography, clear spacing, and modern UI paradigms, the true design work was conceptual. DormCare is not just an exercise in arranging buttons; it is an attempt to structure a messy, real-world service workflow into a predictable, digital task flow that respects the user's limited time.
+                </p>
               </div>
             </div>
-
-            {/* REPORT MAINTENANCE */}
-            <div className="workflow-section reverse">
-              <div className="workflow-text">
-                <h2 className="text-metadata section-number">08 REPORT A MAINTENANCE PROBLEM</h2>
-                <div className="workflow-breakdown text-body">
-                  <div className="workflow-step">
-                    <strong>PROBLEM</strong>
-                    <p>Something in the room needs fixing.</p>
-                  </div>
-                  <div className="workflow-step">
-                    <strong>ACTION</strong>
-                    <p>Report a Maintenance Problem</p>
-                  </div>
-                  <div className="workflow-step">
-                    <strong>DETAILS</strong>
-                    <p>Describe the issue.</p>
-                  </div>
-                  <div className="workflow-step">
-                    <strong>SERVICE</strong>
-                    <p>Connect it with the appropriate maintenance category.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="workflow-visual">
-                <div className="visual-placeholder">
-                  <span className="text-metadata">REPORT MAINTENANCE INTERFACE</span>
-                  <span className="text-small">Clear categorization routes the problem without forcing the user to understand internal operations.</span>
-                </div>
-              </div>
-            </div>
-
           </Container>
         </Section>
 
-        {/* 09 DESIGNING FOR SIMPLICITY */}
+        {/* 08 WHAT I BUILT */}
         <Section className="case-study-section alt-bg">
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">09 DESIGNING FOR SIMPLICITY</h2>
+                <h2 className="text-metadata section-number">08 / WHAT I BUILT</h2>
               </div>
               <div className="grid-content">
+                <h3 className="text-heading-large section-title">A frontend service prototype.</h3>
                 <p className="text-body">
-                  The product deals with users who are already busy. Therefore, the interface should not make them think harder than necessary.
+                  The actual implementation is a React-based frontend application. It successfully demonstrates the core student-facing workflows: service discovery, category selection, issue description, and form submission. The architecture isolates these tasks to prove the validity of the task-oriented UI hypothesis.
                 </p>
-                <ul className="text-body checklist">
-                  <li>Clear primary actions</li>
-                  <li>Obvious service categories</li>
-                  <li>Short workflows</li>
-                  <li>Understandable labels</li>
-                  <li>Strong hierarchy</li>
-                  <li>Minimal unnecessary information</li>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* 09 LIMITATIONS */}
+        <Section className="case-study-section">
+          <Container isEditorial>
+            <div className="case-study-grid">
+              <div className="grid-sidebar">
+                <h2 className="text-metadata section-number">09 / LIMITATIONS</h2>
+              </div>
+              <div className="grid-content">
+                <h3 className="text-heading-large section-title">What this prototype does not solve.</h3>
+                <p className="text-body">
+                  Because this is a frontend prototype, several critical service components remain unresolved:
+                </p>
+                <ul className="text-body bullet-list" style={{ paddingLeft: 'var(--space-24)', marginTop: 'var(--space-16)' }}>
+                  <li><strong>Service-Provider Workflow:</strong> There is no backend dashboard or interface for staff to accept, manage, or close out these requests.</li>
+                  <li><strong>Request Tracking:</strong> The system cannot yet provide students with real-time updates on their request status.</li>
+                  <li><strong>Real-World Validation:</strong> The core hypothesis—that students will use this specific categorization—remains untested against actual university operations.</li>
                 </ul>
-                <div className="before-after-concept text-body">
-                  <div className="concept-side">
-                    <span className="text-metadata">FRICTION</span>
-                    <p>"Find someone who can help."</p>
-                  </div>
-                  <div className="concept-arrow">→</div>
-                  <div className="concept-side highlight">
-                    <span className="text-metadata">DORMCARE</span>
-                    <p>"Tell us what you need."</p>
-                  </div>
-                </div>
-                <p className="text-heading-section emphasis">
-                  Good service design can make the complexity behind the product invisible to the user.
-                </p>
               </div>
             </div>
           </Container>
         </Section>
 
-        {/* 10 BUILDING THE PROTOTYPE */}
-        <Section className="case-study-section">
+        {/* 10 WHAT I WOULD DO NEXT */}
+        <Section className="case-study-section alt-bg">
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">10 BUILDING THE PROTOTYPE</h2>
+                <h2 className="text-metadata section-number">10 / NEXT STEPS</h2>
               </div>
               <div className="grid-content">
-                <h3 className="text-heading-large section-title">Implementing the frontend in React.</h3>
-                <p className="text-body">
-                  Building the React prototype helped explore the actual product experience. It allowed me to validate user flows, service discovery, booking interactions, maintenance reporting, and information hierarchy in an interactive state.
-                </p>
-                <p className="text-body">
-                  <em>(Note: This is a frontend product prototype focusing on service design, rather than a production-ready backend system.)</em>
-                </p>
-              </div>
-            </div>
-          </Container>
-        </Section>
-
-        {/* 11 WHAT I LEARNED */}
-        <Section className="case-study-section">
-          <Container isEditorial>
-            <div className="case-study-grid">
-              <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">11 WHAT I LEARNED</h2>
-              </div>
-              <div className="grid-content">
-                <ol className="text-body numbered-list">
-                  <li>A simple problem can create a surprisingly complex service workflow.</li>
-                  <li>The user should not need to understand the organization's internal structure.</li>
-                  <li>Primary actions should reflect the most common user needs.</li>
-                  <li>Designing the workflow is more important than simply creating screens.</li>
-                  <li>Building the prototype exposes usability problems that aren't obvious during ideation.</li>
+                <h3 className="text-heading-large section-title">Future Product Direction</h3>
+                <p className="text-body">If I were to take this product from prototype to production, my immediate priorities would be:</p>
+                <ol className="text-body numbered-list" style={{ paddingLeft: 'var(--space-24)', marginTop: 'var(--space-16)' }}>
+                  <li><strong>Validate the service-request flow</strong> with actual students to see if the two-button primary architecture holds up under stress.</li>
+                  <li><strong>Understand staff workflows</strong> by interviewing maintenance workers to see how they currently receive and manage requests.</li>
+                  <li><strong>Test service categories</strong> to ensure "Plumbing" and "Carpentry" align with real maintenance needs rather than arbitrary system design.</li>
                 </ol>
-              </div>
-            </div>
-          </Container>
-        </Section>
-
-        {/* 12 WHAT I WOULD IMPROVE */}
-        <Section className="case-study-section">
-          <Container isEditorial>
-            <div className="case-study-grid">
-              <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">12 WHAT I WOULD IMPROVE</h2>
-              </div>
-              <div className="grid-content">
-                <p className="text-body">Future possibilities for expanding the product concept:</p>
-                <ul className="text-body bullet-list">
-                  <li>Real worker availability & backend integration</li>
-                  <li>Booking status and request tracking</li>
-                  <li>Service history</li>
-                  <li>Worker profiles, ratings, and feedback</li>
-                  <li>System notifications</li>
-                  <li>Better maintenance categorization</li>
-                  <li>Real user testing in a dorm environment</li>
-                </ul>
               </div>
             </div>
           </Container>
@@ -362,17 +297,22 @@ export const DormCareCaseStudy: React.FC = () => {
         {/* FOOTER NAV */}
         <Section className="case-study-footer">
           <Container isEditorial>
-            <a 
-              href="/" 
+            <div style={{ paddingBottom: 'var(--space-128)', paddingTop: 'var(--space-96)' }}>
+              <a 
+                href="/" 
               className="text-small back-link"
+              style={{ textDecoration: 'none', color: 'var(--color-secondary-text)', borderBottom: '1px solid var(--color-border)', paddingBottom: '4px' }}
               onClick={(e) => {
-                e.preventDefault();
-                window.history.pushState({}, '', '/');
-                window.dispatchEvent(new PopStateEvent('popstate'));
+                if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey) {
+                  e.preventDefault();
+                  window.history.pushState({}, '', '/');
+                  window.dispatchEvent(new PopStateEvent('popstate'));
+                }
               }}
             >
               ← Back to Portfolio
-            </a>
+              </a>
+            </div>
           </Container>
         </Section>
 

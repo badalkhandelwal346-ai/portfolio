@@ -1,0 +1,152 @@
+/* PolicyLensCaseStudy.css */
+.cs-header {
+  margin-bottom: var(--space-96);
+  padding-top: var(--space-96);
+}
+
+.cs-block {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--space-48);
+  margin-bottom: var(--space-96);
+  border-top: 1px solid var(--color-subtle-border);
+  padding-top: var(--space-48);
+}
+
+/* For the first block, we don't want top padding and border since header handles it */
+.cs-block:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.cs-label {
+  color: var(--color-primary-text);
+  margin: 0;
+  position: sticky;
+  top: 100px;
+}
+
+.cs-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  max-width: 650px;
+}
+
+.cs-statement {
+  color: var(--color-primary-text);
+  margin: 0;
+}
+
+.cs-text {
+  color: var(--color-secondary-text);
+  margin: 0;
+}
+
+/* ----------------------------------------------------------------------
+   HIGHLIGHT BOX (For the Decision)
+   ---------------------------------------------------------------------- */
+.cs-highlight-box {
+  background-color: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  padding: var(--space-48);
+  border-radius: 4px;
+  margin: var(--space-16) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+}
+
+.highlight-layer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.highlight-layer-title {
+  color: var(--color-primary-text);
+  margin: 0;
+  font-weight: 600;
+}
+
+.highlight-layer-text {
+  color: var(--color-secondary-text);
+  margin: 0;
+}
+
+/* ----------------------------------------------------------------------
+   ARCHITECTURE DIAGRAM
+   ---------------------------------------------------------------------- */
+.architecture-diagram {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  margin: var(--space-32) 0;
+}
+
+.arch-node {
+  background-color: var(--color-page-background);
+  border: 1px solid var(--color-border);
+  padding: var(--space-16) var(--space-24);
+  border-radius: 4px;
+  color: var(--color-primary-text);
+  text-align: center;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  letter-spacing: 0.05em;
+}
+
+.arch-arrow {
+  text-align: center;
+  color: var(--color-muted-text);
+  font-size: var(--text-metadata);
+}
+
+/* ----------------------------------------------------------------------
+   UX DECISIONS GRID
+   ---------------------------------------------------------------------- */
+.ux-decisions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-48);
+  margin-top: var(--space-24);
+}
+
+.ux-decision {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding-left: var(--space-24);
+  border-left: 2px solid var(--color-subtle-border);
+}
+
+.ux-decision-title {
+  color: var(--color-primary-text);
+  margin: 0;
+}
+
+.ux-decision-text {
+  color: var(--color-secondary-text);
+  margin: 0;
+}
+
+/* ----------------------------------------------------------------------
+   RESPONSIVE
+   ---------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .cs-block {
+    grid-template-columns: 1fr;
+    gap: var(--space-24);
+    margin-bottom: var(--space-64);
+    padding-top: var(--space-32);
+  }
+
+  .cs-label {
+    position: static;
+  }
+  
+  .cs-highlight-box {
+    padding: var(--space-24);
+  }
+}

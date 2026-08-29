@@ -9,7 +9,8 @@ export const SelectedWork: React.FC = () => {
   // Separate projects by tier for editorial layout
   const primaryProjects = projectsData.filter(p => p.tier === 'primary');
   const secondaryProjects = projectsData.filter(p => p.tier === 'secondary');
-  const tertiaryProjects = projectsData.filter(p => p.tier === 'tertiary');
+  const supportingProjects = projectsData.filter(p => p.tier === 'supporting');
+  const courseProjects = projectsData.filter(p => p.tier === 'course');
 
   return (
     <Section id="work" className="selected-work-section">
@@ -25,7 +26,7 @@ export const SelectedWork: React.FC = () => {
 
         <div className="work-grid">
           
-          {/* Primary Layout */}
+          {/* Primary Layout (Level 1) */}
           {primaryProjects.length > 0 && (
             <div className="work-group primary-group">
               {primaryProjects.map(project => (
@@ -34,7 +35,7 @@ export const SelectedWork: React.FC = () => {
             </div>
           )}
 
-          {/* Secondary Layout - Side by side on large screens */}
+          {/* Secondary Layout (Level 2) */}
           {secondaryProjects.length > 0 && (
             <div className="work-group secondary-group">
               {secondaryProjects.map(project => (
@@ -43,12 +44,29 @@ export const SelectedWork: React.FC = () => {
             </div>
           )}
 
-          {/* Tertiary Layout - Minimal List */}
-          {tertiaryProjects.length > 0 && (
-            <div className="work-group tertiary-group">
-              {tertiaryProjects.map(project => (
+          {/* Supporting Layout (Level 3) */}
+          {supportingProjects.length > 0 && (
+            <div className="work-group supporting-group">
+              <div className="group-label" style={{ marginBottom: 'var(--space-24)' }}>
+                <span className="text-metadata" style={{ color: 'var(--color-muted-text)' }}>EXPERIMENTAL WORK</span>
+              </div>
+              {supportingProjects.map(project => (
                 <ProjectPreview key={project.id} project={project} />
               ))}
+            </div>
+          )}
+
+          {/* Course Projects Layout (Level 4 - Minimal List) */}
+          {courseProjects.length > 0 && (
+            <div className="work-group course-group">
+              <div className="group-label" style={{ marginBottom: 'var(--space-24)', paddingTop: 'var(--space-48)' }}>
+                <span className="text-metadata" style={{ color: 'var(--color-muted-text)' }}>EARLIER EXPLORATIONS</span>
+              </div>
+              <div className="course-list">
+                {courseProjects.map(project => (
+                  <ProjectPreview key={project.id} project={project} />
+                ))}
+              </div>
             </div>
           )}
 

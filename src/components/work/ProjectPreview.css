@@ -27,11 +27,11 @@
 
 /* Secondary Tier - Medium visual */
 .tier-secondary .project-visual-wrapper {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
 }
 
 /* Tertiary Tier - Minimal list item, no visual */
-.tier-tertiary .project-link-wrapper {
+.tier-course .project-link-wrapper {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -127,7 +127,8 @@
     transform: translateY(0);
   }
 
-  .tier-tertiary:hover .project-title {
+  .tier-course:hover .project-title,
+  .tier-supporting:hover .project-title {
     color: var(--color-accent);
   }
 }
@@ -141,7 +142,7 @@
   gap: var(--space-16);
 }
 
-.tier-tertiary .project-content {
+.tier-course .project-content {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -174,20 +175,24 @@
   max-width: 500px;
 }
 
-.tier-tertiary .project-body {
+.tier-supporting .project-body {
+  max-width: 450px;
+}
+
+.tier-course .project-body {
   flex-direction: row;
   align-items: center;
   gap: var(--space-32);
   flex: 1;
 }
 
-.tier-tertiary .project-title {
+.tier-course .project-title {
   font-size: var(--text-heading-section);
   min-width: 180px;
   transition: color 0.3s ease;
 }
 
-.tier-tertiary .project-description {
+.tier-course .project-description {
   margin: 0;
   flex: 1;
 }
@@ -210,7 +215,7 @@
   color: var(--color-muted-text);
 }
 
-.tertiary-explore {
+.course-explore {
   color: var(--color-secondary-text);
   flex-shrink: 0;
 }
@@ -233,26 +238,27 @@
    ---------------------------------------------------------------------- */
 @media (max-width: 768px) {
   .tier-primary .project-link-wrapper,
-  .tier-secondary .project-link-wrapper {
+  .tier-secondary .project-link-wrapper,
+  .tier-supporting .project-link-wrapper {
     gap: var(--space-24);
   }
 
-  .tier-tertiary .project-link-wrapper {
+  .tier-course .project-link-wrapper {
     padding: var(--space-24) 0;
   }
 
-  .tier-tertiary .project-content,
-  .tier-tertiary .project-body {
+  .tier-course .project-content,
+  .tier-course .project-body {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-8);
   }
   
-  .tier-tertiary .project-title {
+  .tier-course .project-title {
     font-size: var(--text-heading-section);
   }
   
-  .tertiary-explore {
+  .course-explore {
     display: none; /* Keep mobile minimal */
   }
 

@@ -13,8 +13,8 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({ project }) => {
   const href = caseStudyUrl || liveUrl || `#project-${project.id}`;
   
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    // If it's a local route (caseStudyUrl) and no modifier keys are pressed, handle client-side navigation
-    if (caseStudyUrl && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+    // If it's a local route (caseStudyUrl), left-click (button 0), and no modifiers are pressed
+    if (caseStudyUrl && e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey) {
       e.preventDefault();
       window.history.pushState({}, '', caseStudyUrl);
       window.dispatchEvent(new PopStateEvent('popstate'));
@@ -34,7 +34,7 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({ project }) => {
       >
         
         {/* Visual Artifact */}
-        {tier !== 'tertiary' && (
+        {(tier !== 'course' && tier !== 'supporting') && (
           <div className="project-visual-wrapper">
             {imageSrc ? (
               <img src={imageSrc} alt={`${title} interface`} className="project-image" loading="lazy" />
@@ -75,9 +75,9 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({ project }) => {
             </div>
           )}
           
-          {/* Tertiary gets an explicit explore link since it has no visual */}
-          {tier === 'tertiary' && (
-            <div className="tertiary-explore">
+          {/* Text-first projects get an explicit explore link since they have no visual block */}
+          {(tier === 'course' || tier === 'supporting') && (
+            <div className="course-explore">
               <span className="text-small">Explore ↗</span>
             </div>
           )}

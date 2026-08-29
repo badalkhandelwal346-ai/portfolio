@@ -7,8 +7,8 @@ export const Navigation: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string, hash?: string) => {
-    // If not holding modifier keys
-    if (!e.ctrlKey && !e.metaKey && !e.shiftKey) {
+    // If it's a left-click (button 0) and not holding modifier keys
+    if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey) {
       e.preventDefault();
       
       const isCurrentlyHome = window.location.pathname === '/';

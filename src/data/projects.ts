@@ -1,4 +1,4 @@
-export type ProjectTier = 'primary' | 'secondary' | 'tertiary';
+export type ProjectTier = 'primary' | 'secondary' | 'supporting' | 'course';
 
 export interface Project {
   id: string;
@@ -25,17 +25,8 @@ export const projectsData: Project[] = [
     technologies: ['Next.js', 'React', 'TypeScript', 'Google Gemini'],
   },
   {
-    id: 'reelsinsight',
-    number: '02',
-    title: 'Reels Insight AI',
-    category: 'DATA / PRODUCT',
-    description: 'Using data to understand when content is most likely to be seen.',
-    tier: 'secondary',
-    technologies: ['Python', 'Pandas', 'React'],
-  },
-  {
     id: 'dormcare',
-    number: '03',
+    number: '02',
     title: 'DormCare',
     category: 'PRODUCT / FRONTEND',
     description: 'Helping students book cleaning and report maintenance without the usual hassle.',
@@ -45,19 +36,28 @@ export const projectsData: Project[] = [
     technologies: ['React'],
   },
   {
+    id: 'reelsinsight',
+    number: '03',
+    title: 'Reels Insight AI',
+    category: 'DATA / PRODUCT',
+    description: 'Using data to understand when content is most likely to be seen.',
+    tier: 'supporting',
+    technologies: ['Python', 'Pandas', 'React'],
+  },
+  {
     id: 'gympulse',
     number: '04',
     title: 'GymPulse',
-    category: 'PRODUCT',
+    category: 'COURSE PROJECT',
     description: 'Product concept exploring fitness and user experience.',
-    tier: 'tertiary',
+    tier: 'course',
   },
   {
     id: 'trademill',
     number: '05',
     title: 'TradeMill',
-    category: 'PRODUCT',
+    category: 'ACADEMIC PROJECT',
     description: 'Product concept exploring financial tools and experience.',
-    tier: 'tertiary',
+    tier: 'course',
   }
 ];
