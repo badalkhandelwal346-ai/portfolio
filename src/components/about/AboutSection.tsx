@@ -8,7 +8,6 @@ export const AboutSection: React.FC = () => {
     <Section id="about" className="about-section">
       <Container isEditorial>
         
-        {/* 01 INTRODUCTION */}
         <div className="about-intro">
           <h2 className="text-display about-manifesto">
             Problem first.<br />
@@ -16,7 +15,6 @@ export const AboutSection: React.FC = () => {
             Interface third.
           </h2>
           <p className="text-heading-large about-statement">
-            I am a product designer and builder interested in turning problems into useful products. 
             I like understanding why a product should exist before deciding how it should look.
           </p>
         </div>

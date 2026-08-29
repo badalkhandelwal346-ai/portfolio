@@ -33,7 +33,7 @@ export const Hero: React.FC<HeroProps> = ({ introPhase }) => {
               Product Designer & Builder
             </h2>
             <p className="hero-statement text-body">
-              I think in products, design for people, and build what I believe should exist.
+              I’m a product designer and builder who turns complex problems into usable software.
             </p>
           </div>
 
