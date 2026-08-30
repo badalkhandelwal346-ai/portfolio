@@ -358,3 +358,34 @@
     align-self: center;
   }
 }
+
+/* ----------------------------------------------------------------------
+   SCROLL REVEAL MARKERS
+   ---------------------------------------------------------------------- */
+.dc-marker {
+  opacity: 0.3;
+  transform: translateX(-10px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+  display: inline-block;
+}
+
+.dc-marker.is-current {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.dc-marker.is-active:not(.is-current) {
+  opacity: 0.6;
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dc-marker {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+

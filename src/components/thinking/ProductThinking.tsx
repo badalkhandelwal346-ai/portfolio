@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { Container } from '../layout/Container';
 import { Section } from '../layout/Section';
 import './ProductThinking.css';
@@ -32,45 +33,7 @@ const steps = [
 ];
 
 export const ProductThinking: React.FC = () => {
-  const [activeStep, setActiveStep] = useState<number>(0);
-  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    // Respect reduced motion by disabling the intersection observer logic if preferred
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      setActiveStep(-1); // -1 signifies all active
-      return;
-    }
-
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -40% 0px', // Trigger when the item reaches the top 20-60% of viewport
-      threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = stepRefs.current.findIndex((ref) => ref === entry.target);
-          if (index !== -1) {
-            setActiveStep(index);
-          }
-        }
-      });
-    }, observerOptions);
-
-    const currentRefs = stepRefs.current;
-    currentRefs.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      currentRefs.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, []);
+  const { activeIndex: activeStep, elementsRef: stepRefs } = useScrollReveal();
 
   return (
     <Section id="thinking" className="thinking-section">

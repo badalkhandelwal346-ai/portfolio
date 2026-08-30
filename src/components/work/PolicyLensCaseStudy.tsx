@@ -3,9 +3,18 @@ import { Container } from '../layout/Container';
 import { Section } from '../layout/Section';
 import { ThemeProvider } from '../../theme/ThemeContext';
 import { Layout } from '../layout/Layout';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './PolicyLensCaseStudy.css';
 
 export const PolicyLensCaseStudy: React.FC = () => {
+  const { activeIndex, elementsRef } = useScrollReveal();
+
+  const getMarkerClass = (index: number) => {
+    const isActive = activeIndex === -1 || activeIndex >= index;
+    const isCurrent = activeIndex === -1 || activeIndex === index;
+    return `cs-marker ${isActive ? 'is-active' : ''} ${isCurrent ? 'is-current' : ''}`.trim();
+  };
+
   return (
     <ThemeProvider>
       <Layout>
@@ -13,102 +22,157 @@ export const PolicyLensCaseStudy: React.FC = () => {
           <Container isEditorial>
             
             {/* Header */}
-            <div className="cs-header">
+            <div className="cs-header" ref={(el) => { elementsRef.current[0] = el; }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-24)', maxWidth: '600px' }}>
-                <span className="text-metadata" style={{ color: 'var(--color-primary-text)' }}>
-                  01 / PRODUCT & AI
+                <span className={`text-metadata ${getMarkerClass(0)}`} style={{ color: 'var(--color-primary-text)' }}>
+                  01 / OVERVIEW
                 </span>
                 <h1 className="text-display">PolicyLens AI</h1>
                 <p className="text-heading-section" style={{ color: 'var(--color-secondary-text)' }}>
-                  Turning fragmented government policies into information people can actually use.
+                  A product exploring how structured policy data and AI interpretation can make government information discoverable, readable, and personal.
                 </p>
               </div>
             </div>
 
-            {/* 01 THE PROBLEM */}
-            <div className="cs-block">
-              <h3 className="text-metadata cs-label">01 / THE PROBLEM</h3>
+            {/* 02 THE PROBLEM */}
+            <div className="cs-block" ref={(el) => { elementsRef.current[1] = el; }}>
+              <div className="cs-sidebar">
+                <h2 className="text-metadata cs-label">
+                  <span className={getMarkerClass(1)}>02 / THE PROBLEM</span>
+                </h2>
+              </div>
               <div className="cs-content">
-                <h4 className="text-heading-large cs-statement">
-                  Policy information exists, but it is fundamentally inaccessible.
-                </h4>
+                <h3 className="text-heading-large cs-statement">
+                  Policy information is fragmented and incomprehensible.
+                </h3>
                 <p className="text-body cs-text">
-                  Government websites publish thousands of pages of policy documents, subsidies, and regulations. However, the product problem isn't a lack of information—it's a lack of context. 
+                  Government websites publish thousands of pages of policies, subsidies, and regulations. However, raw information does not automatically translate into useful personal guidance.
                 </p>
                 <p className="text-body cs-text">
-                  Users struggle because they do not know which policies are relevant to them, whether they qualify, what the bureaucratic language actually means, or what specific actions they need to take. The challenge is finding relevant information, understanding it, and deciding what to do next.
+                  Individuals struggle to discover which policies apply to them, what the bureaucratic language means, and what actions they need to take. The complexity lies in finding relevant information, interpreting it accurately, and deciding on next steps without being overwhelmed.
                 </p>
               </div>
             </div>
 
-            {/* 02 THE PRODUCT QUESTION */}
-            <div className="cs-block">
-              <h3 className="text-metadata cs-label">02 / PRODUCT QUESTION</h3>
-              <div className="cs-content">
-                <h4 className="text-heading-large cs-statement">
-                  How might we make policy discovery personal without making the information unreliable?
-                </h4>
-                <p className="text-body cs-text">
-                  The core tension of this product is personalization versus trust. AI is excellent at summarizing and personalizing information for a specific user. But government policy requires absolute accuracy. An AI hallucinating an eligibility requirement could have severe real-world consequences for a user relying on that information.
-                </p>
+            {/* 03 THE PRODUCT */}
+            <div className="cs-block" ref={(el) => { elementsRef.current[2] = el; }}>
+              <div className="cs-sidebar">
+                <h2 className="text-metadata cs-label">
+                  <span className={getMarkerClass(2)}>03 / THE PRODUCT</span>
+                </h2>
               </div>
-            </div>
-
-            {/* 03 THE KEY DESIGN CHALLENGE */}
-            <div className="cs-block">
-              <h3 className="text-metadata cs-label">03 / THE CHALLENGE</h3>
               <div className="cs-content">
-                <h4 className="text-heading-large cs-statement">
-                  Keeping AI out of the database.
-                </h4>
+                <h3 className="text-heading-large cs-statement">
+                  Structured Policy Data + AI Interpretation.
+                </h3>
                 <p className="text-body cs-text">
-                  The central challenge was navigating how to use a Large Language Model without allowing AI-generated responses to become the source of truth. If a user asks "Do I qualify for the housing subsidy?", the application cannot simply ask the LLM to invent an answer based on its training data.
-                </p>
-              </div>
-            </div>
-
-            {/* 04 THE DECISION */}
-            <div className="cs-block">
-              <h3 className="text-metadata cs-label">04 / THE DECISION</h3>
-              <div className="cs-content">
-                <h4 className="text-heading-large cs-statement">
-                  Separating structured data from AI interpretation.
-                </h4>
-                <p className="text-body cs-text">
-                  To solve the trust problem, I architected a strict two-layer approach. The AI interprets the information rather than serving as the underlying database of truth.
+                  PolicyLens addresses this discovery problem by acting as an intelligent intermediary. It does not invent information. Instead, it relies on a two-layer architecture:
                 </p>
                 
                 <div className="cs-highlight-box">
                   <div className="highlight-layer">
-                    <h4 className="text-metadata highlight-layer-title">LAYER 1: GROUNDED STRUCTURED POLICY INFORMATION</h4>
+                    <h4 className="text-metadata highlight-layer-title">SOURCE OF INFORMATION</h4>
                     <p className="text-body highlight-layer-text">
-                      The application relies on a deterministic database of structured policy data. This layer holds the verified facts: eligibility rules, deadlines, and official links. It cannot be altered by the AI.
+                      A structured database containing deterministic, verified facts about policies, eligibility criteria, and deadlines.
                     </p>
                   </div>
                   <div className="highlight-layer">
-                    <h4 className="text-metadata highlight-layer-title">LAYER 2: AI INTERPRETATION</h4>
+                    <h4 className="text-metadata highlight-layer-title">INTERPRETATION LAYER</h4>
                     <p className="text-body highlight-layer-text">
-                      Google Gemini is used exclusively as an interpretation layer. It takes the grounded facts from Layer 1 and the user's specific context, and translates the bureaucratic language into a personalized, readable explanation.
+                      An AI layer (Google Gemini) that translates the grounded facts from the database into personalized, readable explanations based on the user's context.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* 05 HOW I BUILT IT */}
-            <div className="cs-block">
-              <h3 className="text-metadata cs-label">05 / HOW I BUILT IT</h3>
+            {/* 04 PRODUCT THINKING */}
+            <div className="cs-block" ref={(el) => { elementsRef.current[3] = el; }}>
+              <div className="cs-sidebar">
+                <h2 className="text-metadata cs-label">
+                  <span className={getMarkerClass(3)}>04 / PRODUCT THINKING</span>
+                </h2>
+              </div>
+              <div className="cs-content">
+                <h3 className="text-heading-large cs-statement">
+                  Designing for trust and personalization.
+                </h3>
+                <p className="text-body cs-text">
+                  The core product tension was balancing the hyper-personalization capabilities of AI with the absolute accuracy required for government policy.
+                </p>
+                
+                <div className="ux-decisions">
+                  <div className="ux-decision">
+                    <h4 className="text-metadata ux-decision-title">PROBLEM: RELEVANCE & COGNITIVE LOAD</h4>
+                    <p className="text-body ux-decision-text">
+                      <strong>Decision:</strong> Surface policies based on relevant user context rather than manual search.<br/>
+                      <strong>Reason:</strong> Users often don't know what to search for. Context-driven discovery reduces cognitive overhead.<br/>
+                      <strong>Trade-off:</strong> Personalization requires users to input structured personal context, introducing friction and privacy considerations.
+                    </p>
+                  </div>
+                  
+                  <div className="ux-decision">
+                    <h4 className="text-metadata ux-decision-title">PROBLEM: AI HALLUCINATIONS</h4>
+                    <p className="text-body ux-decision-text">
+                      <strong>Decision:</strong> Restrict AI strictly to an interpretation role; keep it out of the factual database.<br/>
+                      <strong>Reason:</strong> An AI inventing an eligibility requirement could have severe real-world consequences. The LLM must translate, not generate, facts.<br/>
+                      <strong>Trade-off:</strong> The system is constrained by the quality and structure of the underlying deterministic database.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 05 DESIGN DECISIONS */}
+            <div className="cs-block" ref={(el) => { elementsRef.current[4] = el; }}>
+              <div className="cs-sidebar">
+                <h2 className="text-metadata cs-label">
+                  <span className={getMarkerClass(4)}>05 / DESIGN DECISIONS</span>
+                </h2>
+              </div>
+              <div className="cs-content">
+                <h3 className="text-heading-large cs-statement">
+                  Information hierarchy and transparency.
+                </h3>
+                
+                <div className="ux-decisions">
+                  <div className="ux-decision">
+                    <h4 className="text-metadata ux-decision-title">WHAT: PROGRESSIVE DISCLOSURE</h4>
+                    <p className="text-body ux-decision-text">
+                      <strong>Why:</strong> Policy language is dense. Providing high-level summaries first, with options to drill down into specific clauses, prevents immediate overwhelm.<br/>
+                      <strong>Trade-off:</strong> Requires carefully structured UI components and increases the number of clicks for users who want all details immediately.
+                    </p>
+                  </div>
+
+                  <div className="ux-decision">
+                    <h4 className="text-metadata ux-decision-title">WHAT: EXPLICIT SOURCING</h4>
+                    <p className="text-body ux-decision-text">
+                      <strong>Why:</strong> Even with grounded data, users need an escape hatch to verify the primary source. The interface visually separates the AI summary from official government links.<br/>
+                      <strong>Trade-off:</strong> Adds visual density to the interface and requires the backend to consistently map and return source URLs.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 06 BUILD / IMPLEMENTATION */}
+            <div className="cs-block" ref={(el) => { elementsRef.current[5] = el; }}>
+              <div className="cs-sidebar">
+                <h2 className="text-metadata cs-label">
+                  <span className={getMarkerClass(5)}>06 / IMPLEMENTATION</span>
+                </h2>
+              </div>
               <div className="cs-content">
                 <p className="text-body cs-text">
-                  The application is built with Next.js, React, and TypeScript. When a user interacts with the system, the architecture enforces a strict directional flow to maintain accuracy.
+                  The prototype is built using Next.js, React, TypeScript, and Tailwind CSS. The architecture enforces a strict directional flow:
                 </p>
                 
                 <div className="architecture-diagram">
-                  <div className="arch-node">USER PROVIDES CONTEXT</div>
+                  <div className="arch-node">USER PROVIDES CONTEXT (FRONTEND)</div>
                   <div className="arch-arrow">↓</div>
-                  <div className="arch-node">SYSTEM QUERIES STRUCTURED DATA</div>
+                  <div className="arch-node">NEXT.JS API ROUTES</div>
                   <div className="arch-arrow">↓</div>
-                  <div className="arch-node">VERIFIED POLICY FACTS RETRIEVED</div>
+                  <div className="arch-node">STRUCTURED POLICY DATA QUERIED</div>
                   <div className="arch-arrow">↓</div>
                   <div className="arch-node">GEMINI PROMPTED WITH STRICT CONSTRAINTS</div>
                   <div className="arch-arrow">↓</div>
@@ -116,54 +180,48 @@ export const PolicyLensCaseStudy: React.FC = () => {
                 </div>
                 
                 <p className="text-body cs-text">
-                  Gemini was chosen specifically because of its ability to process complex prompts with strict behavioral guardrails. The model's product role is strictly translational—turning rigid facts into accessible answers.
+                  Google Gemini integration is handled server-side via Next.js API routes, ensuring API keys remain secure while applying strict system prompts to constrain model behavior.
                 </p>
               </div>
             </div>
 
-            {/* UX DECISIONS */}
-            <div className="cs-block">
-              <h3 className="text-metadata cs-label">UX DECISIONS</h3>
-              <div className="cs-content">
-                <h4 className="text-heading-large cs-statement">
-                  Designing for comprehension.
-                </h4>
-                
-                <div className="ux-decisions">
-                  <div className="ux-decision">
-                    <h4 className="text-metadata ux-decision-title">PROBLEM: INFORMATION OVERLOAD</h4>
-                    <p className="text-body ux-decision-text">
-                      <strong>Decision:</strong> Grouping information strictly by life-events rather than government departments.<br/>
-                      <strong>Reason:</strong> Users do not navigate their lives by knowing which ministry handles a problem; they navigate by events like "starting a business" or "having a child."
-                    </p>
-                  </div>
-                  
-                  <div className="ux-decision">
-                    <h4 className="text-metadata ux-decision-title">PROBLEM: TRUSTING THE AI</h4>
-                    <p className="text-body ux-decision-text">
-                      <strong>Decision:</strong> Always displaying the official source link alongside the AI explanation.<br/>
-                      <strong>Reason:</strong> Even with grounded data, users need an escape hatch to verify the primary source. The interface visually separates the AI summary from the official government link.
-                    </p>
-                  </div>
-                </div>
+            {/* 07 OUTCOME / CURRENT STATE */}
+            <div className="cs-block" ref={(el) => { elementsRef.current[6] = el; }}>
+              <div className="cs-sidebar">
+                <h2 className="text-metadata cs-label">
+                  <span className={getMarkerClass(6)}>07 / CURRENT STATE</span>
+                </h2>
               </div>
-            </div>
-
-            {/* 06 WHAT I LEARNED */}
-            <div className="cs-block">
-              <h3 className="text-metadata cs-label">06 / REFLECTION</h3>
               <div className="cs-content">
-                <h4 className="text-heading-large cs-statement">
-                  What I would change next.
-                </h4>
+                <h3 className="text-heading-large cs-statement">
+                  A functional implementation and prototype.
+                </h3>
                 <p className="text-body cs-text">
-                  While the architectural separation of data and AI was successful, this prototype revealed several areas that need deeper work:
+                  PolicyLens currently exists as a working product concept. The technical architecture successfully separates data from interpretation, demonstrating the viability of the approach.
                 </p>
-                <ul className="text-body cs-text" style={{ paddingLeft: 'var(--space-24)', display: 'flex', flexDirection: 'column', gap: 'var(--space-12)', marginTop: 'var(--space-16)' }}>
-                  <li><strong>Policy Data Freshness:</strong> The structured data layer currently relies on static integration. In a production environment, this would require a robust pipeline to detect and update when government policies change.</li>
-                  <li><strong>Eligibility Edge Cases:</strong> The current logic handles standard eligibility well, but bureaucratic edge cases (e.g., overlapping subsidies) require a more sophisticated rules engine before reaching the AI layer.</li>
-                  <li><strong>User Validation:</strong> Because this was built as a prototype, the next critical step would be validating the comprehension assumptions with real users facing actual policy constraints.</li>
-                </ul>
+                <p className="text-body cs-text">
+                  However, it relies on a localized, static dataset for its policy facts. Real-world implementation would require robust data pipelines connected to live government repositories.
+                </p>
+              </div>
+            </div>
+
+            {/* 08 REFLECTION */}
+            <div className="cs-block" ref={(el) => { elementsRef.current[7] = el; }}>
+              <div className="cs-sidebar">
+                <h2 className="text-metadata cs-label">
+                  <span className={getMarkerClass(7)}>08 / REFLECTION</span>
+                </h2>
+              </div>
+              <div className="cs-content">
+                <h3 className="text-heading-large cs-statement">
+                  Balancing AI with structured information.
+                </h3>
+                <p className="text-body cs-text">
+                  Building PolicyLens highlighted the limitations of treating AI as an all-in-one solution for information retrieval. While LLMs are exceptional at translation and summarization, they are unreliable as databases.
+                </p>
+                <p className="text-body cs-text">
+                  The most critical product decision was acknowledging that constraint. By designing the system to rely on a deterministic database first, the AI could safely focus on what it does best: making complex, bureaucratic language understandable. The next logical step would be validating these comprehension assumptions with users facing actual policy constraints.
+                </p>
               </div>
             </div>
 
@@ -191,3 +249,4 @@ export const PolicyLensCaseStudy: React.FC = () => {
     </ThemeProvider>
   );
 };
+

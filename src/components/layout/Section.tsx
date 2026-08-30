@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import './Section.css';
 
 interface SectionProps {
@@ -8,13 +8,18 @@ interface SectionProps {
   fullHeight?: boolean;
 }
 
-export const Section: React.FC<SectionProps> = ({ children, id, className = '', fullHeight = false }) => {
-  return (
-    <section 
-      id={id} 
-      className={`section ${fullHeight ? 'section-full-height' : ''} ${className}`}
-    >
-      {children}
-    </section>
-  );
-};
+export const Section = forwardRef<HTMLElement, SectionProps>(
+  ({ children, id, className = '', fullHeight = false }, ref) => {
+    return (
+      <section 
+        ref={ref}
+        id={id} 
+        className={`section ${fullHeight ? 'section-full-height' : ''} ${className}`}
+      >
+        {children}
+      </section>
+    );
+  }
+);
+
+Section.displayName = 'Section';

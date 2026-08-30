@@ -3,18 +3,27 @@ import { Container } from '../layout/Container';
 import { Section } from '../layout/Section';
 import { ThemeProvider } from '../../theme/ThemeContext';
 import { Layout } from '../layout/Layout';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './DormCareCaseStudy.css';
 
 export const DormCareCaseStudy: React.FC = () => {
+  const { activeIndex, elementsRef } = useScrollReveal();
+
+  const getMarkerClass = (index: number) => {
+    const isActive = activeIndex === -1 || activeIndex >= index;
+    const isCurrent = activeIndex === -1 || activeIndex === index;
+    return `dc-marker ${isActive ? 'is-active' : ''} ${isCurrent ? 'is-current' : ''}`.trim();
+  };
+
   return (
     <ThemeProvider>
       <Layout>
         
         {/* 00 OVERVIEW / HERO */}
-        <Section className="case-study-hero">
+        <Section className="case-study-hero" ref={(el) => { elementsRef.current[0] = el; }}>
           <Container isEditorial>
             <div className="case-study-header">
-              <span className="text-metadata case-study-label">02 / PRODUCT & FRONTEND</span>
+              <span className={`text-metadata case-study-label ${getMarkerClass(0)}`}>02 / PRODUCT & FRONTEND</span>
               <h1 className="text-display case-study-title">DormCare</h1>
               <p className="text-heading-section case-study-subtitle">
                 Student Services, Simplified.
@@ -64,11 +73,13 @@ export const DormCareCaseStudy: React.FC = () => {
         </Section>
 
         {/* 01 THE PROBLEM */}
-        <Section className="case-study-section">
+        <Section className="case-study-section" ref={(el) => { elementsRef.current[1] = el; }}>
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">01 / THE PROBLEM</h2>
+                <h2 className="text-metadata section-number">
+                  <span className={getMarkerClass(1)}>01 / THE PROBLEM</span>
+                </h2>
               </div>
               <div className="grid-content">
                 <h3 className="text-heading-large section-title">Everyday maintenance is deeply fragmented.</h3>
@@ -84,11 +95,13 @@ export const DormCareCaseStudy: React.FC = () => {
         </Section>
 
         {/* 02 THE PRODUCT QUESTION */}
-        <Section className="case-study-section alt-bg">
+        <Section className="case-study-section alt-bg" ref={(el) => { elementsRef.current[2] = el; }}>
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">02 / PRODUCT QUESTION</h2>
+                <h2 className="text-metadata section-number">
+                  <span className={getMarkerClass(2)}>02 / PRODUCT QUESTION</span>
+                </h2>
               </div>
               <div className="grid-content">
                 <h3 className="text-heading-large section-title">
@@ -103,11 +116,13 @@ export const DormCareCaseStudy: React.FC = () => {
         </Section>
 
         {/* 03 USERS AND SERVICE SYSTEM */}
-        <Section className="case-study-section">
+        <Section className="case-study-section" ref={(el) => { elementsRef.current[3] = el; }}>
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">03 / SERVICE SYSTEM</h2>
+                <h2 className="text-metadata section-number">
+                  <span className={getMarkerClass(3)}>03 / SERVICE SYSTEM</span>
+                </h2>
               </div>
               <div className="grid-content">
                 <p className="text-body">
@@ -140,11 +155,13 @@ export const DormCareCaseStudy: React.FC = () => {
         </Section>
 
         {/* 04 KEY PRODUCT DECISION */}
-        <Section className="case-study-section alt-bg">
+        <Section className="case-study-section alt-bg" ref={(el) => { elementsRef.current[4] = el; }}>
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">04 / KEY DECISION</h2>
+                <h2 className="text-metadata section-number">
+                  <span className={getMarkerClass(4)}>04 / KEY DECISION</span>
+                </h2>
               </div>
               <div className="grid-content">
                 <h3 className="text-heading-large section-title">Task-oriented entry points.</h3>
@@ -160,11 +177,13 @@ export const DormCareCaseStudy: React.FC = () => {
         </Section>
 
         {/* 05 SERVICE FLOW */}
-        <Section className="case-study-section">
+        <Section className="case-study-section" ref={(el) => { elementsRef.current[5] = el; }}>
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">05 / SERVICE FLOW</h2>
+                <h2 className="text-metadata section-number">
+                  <span className={getMarkerClass(5)}>05 / SERVICE FLOW</span>
+                </h2>
               </div>
               <div className="grid-content">
                 <div className="service-flow-diagram" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)', margin: 'var(--space-32) 0' }}>
@@ -187,11 +206,13 @@ export const DormCareCaseStudy: React.FC = () => {
         </Section>
 
         {/* 06 UX DECISIONS */}
-        <Section className="case-study-section alt-bg">
+        <Section className="case-study-section alt-bg" ref={(el) => { elementsRef.current[6] = el; }}>
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">06 / UX DECISIONS</h2>
+                <h2 className="text-metadata section-number">
+                  <span className={getMarkerClass(6)}>06 / UX DECISIONS</span>
+                </h2>
               </div>
               <div className="grid-content">
                 <div className="ux-decisions" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-48)' }}>
@@ -219,11 +240,13 @@ export const DormCareCaseStudy: React.FC = () => {
         </Section>
 
         {/* 07 DESIGN VS PRODUCT THINKING */}
-        <Section className="case-study-section">
+        <Section className="case-study-section" ref={(el) => { elementsRef.current[7] = el; }}>
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">07 / DESIGN VS PRODUCT</h2>
+                <h2 className="text-metadata section-number">
+                  <span className={getMarkerClass(7)}>07 / DESIGN VS PRODUCT</span>
+                </h2>
               </div>
               <div className="grid-content">
                 <h3 className="text-heading-large section-title">Designing around a service model.</h3>
@@ -236,11 +259,13 @@ export const DormCareCaseStudy: React.FC = () => {
         </Section>
 
         {/* 08 WHAT I BUILT */}
-        <Section className="case-study-section alt-bg">
+        <Section className="case-study-section alt-bg" ref={(el) => { elementsRef.current[8] = el; }}>
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">08 / WHAT I BUILT</h2>
+                <h2 className="text-metadata section-number">
+                  <span className={getMarkerClass(8)}>08 / WHAT I BUILT</span>
+                </h2>
               </div>
               <div className="grid-content">
                 <h3 className="text-heading-large section-title">A frontend service prototype.</h3>
@@ -253,11 +278,13 @@ export const DormCareCaseStudy: React.FC = () => {
         </Section>
 
         {/* 09 LIMITATIONS */}
-        <Section className="case-study-section">
+        <Section className="case-study-section" ref={(el) => { elementsRef.current[9] = el; }}>
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">09 / LIMITATIONS</h2>
+                <h2 className="text-metadata section-number">
+                  <span className={getMarkerClass(9)}>09 / LIMITATIONS</span>
+                </h2>
               </div>
               <div className="grid-content">
                 <h3 className="text-heading-large section-title">What this prototype does not solve.</h3>
@@ -275,11 +302,13 @@ export const DormCareCaseStudy: React.FC = () => {
         </Section>
 
         {/* 10 WHAT I WOULD DO NEXT */}
-        <Section className="case-study-section alt-bg">
+        <Section className="case-study-section alt-bg" ref={(el) => { elementsRef.current[10] = el; }}>
           <Container isEditorial>
             <div className="case-study-grid">
               <div className="grid-sidebar">
-                <h2 className="text-metadata section-number">10 / NEXT STEPS</h2>
+                <h2 className="text-metadata section-number">
+                  <span className={getMarkerClass(10)}>10 / NEXT STEPS</span>
+                </h2>
               </div>
               <div className="grid-content">
                 <h3 className="text-heading-large section-title">Future Product Direction</h3>
