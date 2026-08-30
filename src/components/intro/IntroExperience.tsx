@@ -15,11 +15,11 @@ export const IntroExperience: React.FC<{ phase: string; setPhase: (phase: any) =
     const timers = [
       setTimeout(() => setPhase('coding'), 100),
       // Wait for typing animation to complete (finishes ~2000ms)
-      setTimeout(() => setPhase('transitioning'), 2300),
+      setTimeout(() => setPhase('transitioning'), 2800),
       // Resolve to final state faster to reduce wait
       setTimeout(() => {
         setPhase('complete');
-      }, 2600)
+      }, 5000)
     ];
 
     return () => timers.forEach(clearTimeout);
