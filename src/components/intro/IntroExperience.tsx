@@ -6,25 +6,20 @@ export const IntroExperience: React.FC<{ phase: string; setPhase: (phase: any) =
     // Respect reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Check if the intro has been seen before (persistence)
-    const hasSeenIntro = sessionStorage.getItem('portfolio-intro-seen');
-
-    if (prefersReducedMotion || hasSeenIntro) {
+    if (prefersReducedMotion) {
       setPhase('complete');
-      sessionStorage.setItem('portfolio-intro-seen', 'true');
       return;
     }
 
     // Timing sequence for the intro experience
     const timers = [
       setTimeout(() => setPhase('coding'), 100),
-      // Wait for typing animation to complete
-      setTimeout(() => setPhase('transitioning'), 2000),
-      // Resolve to final state
+      // Wait for typing animation to complete (finishes ~2000ms)
+      setTimeout(() => setPhase('transitioning'), 2300),
+      // Resolve to final state faster to reduce wait
       setTimeout(() => {
         setPhase('complete');
-        sessionStorage.setItem('portfolio-intro-seen', 'true');
-      }, 3500)
+      }, 2600)
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -36,7 +31,7 @@ export const IntroExperience: React.FC<{ phase: string; setPhase: (phase: any) =
     <div className={`intro-experience phase-${phase}`} aria-hidden={phase === 'complete'}>
       {/* CODE LAYER */}
       <div className="intro-code-layer">
-        <div className="code-block text-small">
+        <div className="code-block">
           <div className="code-line line-1">
             <span className="keyword">const</span> builder <span className="operator">=</span> <span className="keyword">new</span> <span className="class-name">Badal</span>();
           </div>

@@ -2,6 +2,13 @@
   width: 100%;
   padding-top: var(--space-24);
   padding-bottom: var(--space-24);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background-color 0.3s ease;
 }
 
 .navigation-nav {
@@ -42,4 +49,65 @@
     justify-content: flex-start;
     gap: var(--space-16);
   }
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav-signature-text {
+  font-family: 'Alex Brush', cursive;
+  font-size: 2.2rem;
+  line-height: 1;
+  white-space: nowrap;
+  
+  /* Metallic ink glimmer effect */
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #999999 25%,
+    #ffffff 50%,
+    #999999 75%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: signatureInkGlimmer 6s linear infinite;
+}
+
+@keyframes signatureInkGlimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
+
+.signature-initial {
+  font-size: 3.6rem;
+}
+
+.nav-link-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: opacity 0.2s ease;
+}
+
+.nav-link-item:hover {
+  opacity: 0.8;
+}
+
+.silver-glow-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 4px #c0c0c0, 0 0 8px #ffffff;
 }

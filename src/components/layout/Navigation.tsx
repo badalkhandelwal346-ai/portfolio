@@ -1,10 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from './Container';
 import './Navigation.css';
 import { useTheme } from '../../theme/ThemeContext';
 
 export const Navigation: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
+  const [activeSection, setActiveSection] = useState<string>('');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // The sections we want to track
+      const sections = ['work', 'thinking', 'about', 'contact'];
+      let current = '';
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Adjust offset as needed for when a section is considered "active"
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            current = section;
+          }
+        }
+      }
+      
+      // If we are at the very top, maybe nothing is highlighted, or home is.
+      if (window.scrollY < 50) {
+        current = ''; // or default to 'work' if work is the first section
+      }
+      
+      setActiveSection(current);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Call once on mount
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string, hash?: string) => {
     // If it's a left-click (button 0) and not holding modifier keys
@@ -41,6 +75,17 @@ export const Navigation: React.FC = () => {
     }
   };
 
+  const renderLink = (hash: string, label: string) => {
+    const isActive = activeSection === hash;
+    return (
+      <li>
+        <a href={`/#${hash}`} className="text-body nav-link-item" onClick={(e) => handleNavClick(e, '/', hash)}>
+          {label} {isActive && <span className="silver-glow-dot"></span>}
+        </a>
+      </li>
+    );
+  };
+
   return (
     <header className="navigation-header">
       <Container>
@@ -48,27 +93,20 @@ export const Navigation: React.FC = () => {
           <div className="navigation-brand">
             <a 
               href="/" 
-              className="text-small" 
-              style={{ fontWeight: 600 }}
+              className="text-body nav-logo" 
               onClick={(e) => handleNavClick(e, '/', '')}
             >
-              BADAL KHANDELWAL
+              <span className="nav-signature-text">
+                <span className="signature-initial">B</span>adal <span className="signature-initial">K</span>handelwal
+              </span>
             </a>
           </div>
           
           <ul className="navigation-links">
-            <li><a href="/#work" className="text-small" onClick={(e) => handleNavClick(e, '/', 'work')}>WORK</a></li>
-            <li><a href="/#about" className="text-small" onClick={(e) => handleNavClick(e, '/', 'about')}>ABOUT</a></li>
-            <li><a href="/#contact" className="text-small" onClick={(e) => handleNavClick(e, '/', 'contact')}>CONTACT</a></li>
-            <li>
-              <button 
-                onClick={toggleTheme} 
-                className="theme-toggle-btn text-small"
-                aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-              >
-                {theme === 'light' ? 'NIGHT' : 'DAY'}
-              </button>
-            </li>
+            {renderLink('work', 'Work')}
+            {renderLink('thinking', 'Thinking')}
+            {renderLink('about', 'About')}
+            {renderLink('contact', 'Contact')}
           </ul>
         </nav>
       </Container>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Inter:wght@400;500;600&display=swap');
 
 /* ==========================================================================
    DESIGN TOKENS & THEME INFRASTRUCTURE
@@ -67,7 +67,7 @@
   /* ----------------------------------------------------------------------
      NIGHT THEME (DARK) - DEFAULT
      ---------------------------------------------------------------------- */
-  --color-page-background-night: #0a0a0a; /* Black/charcoal base */
+  --color-page-background-night: #000000; /* Pure black to match portrait background */
   --color-surface-night: #141414; /* Dark grey */
   --color-elevated-surface-night: #1f1f1f;
   --color-primary-text-night: #FAFAFA; /* Off-white */

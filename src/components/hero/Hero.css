@@ -4,7 +4,8 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: var(--space-96); /* Ensure space for nav */
+  padding-top: var(--space-96);
+  /* Ensure space for nav */
   padding-bottom: var(--space-64);
 }
 
@@ -16,18 +17,17 @@
 }
 
 .hero-composition {
+  position: relative;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-64);
+  min-height: 65vh;
   width: 100%;
-  max-width: var(--layout-max-width-editorial);
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1.2s cubic-bezier(0.2, 0, 0, 1),
-              transform 1.2s cubic-bezier(0.2, 0, 0, 1);
+    transform 1.2s cubic-bezier(0.2, 0, 0, 1);
   will-change: opacity, transform;
 }
 
@@ -37,15 +37,17 @@
 }
 
 .hero-content {
-  flex: 1;
+  position: relative;
+  z-index: 10;
   display: flex;
   flex-direction: column;
-  gap: var(--space-24);
+  gap: var(--space-16);
+  max-width: 800px;
   /* The typography fades in slightly staggered behind the portrait */
   opacity: 0;
   transform: translateX(-15px);
   transition: opacity 1s cubic-bezier(0.2, 0, 0, 1) 0.3s,
-              transform 1s cubic-bezier(0.2, 0, 0, 1) 0.3s;
+    transform 1s cubic-bezier(0.2, 0, 0, 1) 0.3s;
 }
 
 .hero-composition.revealed .hero-content {
@@ -53,10 +55,46 @@
   transform: translateX(0);
 }
 
-.hero-name {
-  font-weight: 600;
-  letter-spacing: -0.02em;
+.text-hero-huge {
+  font-size: 6rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   margin: 0;
+}
+
+.hero-name {
+  background: linear-gradient(
+    110deg,
+    #999999 35%,
+    #ffffff 50%,
+    #999999 65%
+  );
+  background-size: 200% auto;
+  background-position: 200% center;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: heroShine 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes heroShine {
+  0% {
+    background-position: 200% center;
+  }
+  50% {
+    background-position: -100% center;
+  }
+  100% {
+    background-position: -100% center;
+  }
+}
+
+@media (max-width: 768px) {
+  .text-hero-huge {
+    font-size: 4rem;
+  }
 }
 
 .hero-role {
@@ -73,32 +111,34 @@
 
 /* Portrait */
 .hero-portrait-anchor {
-  flex-shrink: 0;
-  position: relative;
-  /* Lift the portrait slightly upward as requested */
-  transform: translateY(-20px);
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  transform: translateY(-50%);
+  width: 70%;
+  height: 150%;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.portrait-container {
-  width: 280px;
-  height: 373px; /* 3:4 ratio */
-  overflow: hidden;
-  background-color: var(--color-surface);
-  border-radius: 4px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-}
-
-[data-theme='dark'] .portrait-container {
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+/* Gradient masking for seamless blending */
+.hero-portrait-anchor::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, var(--color-page-background) 0%, transparent 60%),
+    linear-gradient(to top, var(--color-page-background) 0%, transparent 20%),
+    linear-gradient(to bottom, var(--color-page-background) 0%, transparent 20%);
 }
 
 .portrait-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%) contrast(1.05);
-  transition: filter 0.5s ease;
+  object-position: center;
+  filter: grayscale(100%) contrast(1.1) brightness(0.9);
+  /* Add a very subtle opacity transition when revealing */
 }
 
 .portrait-placeholder {
@@ -113,6 +153,37 @@
 }
 
 /* CTA */
+.hero-cta-text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
+  color: var(--color-primary-text);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: var(--space-24);
+  transition: opacity 0.3s ease;
+}
+
+.hero-cta-text:hover {
+  opacity: 0.7;
+}
+
+.hero-cta-arrow-right {
+  color: #ffffff;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.hero-cta-text:hover .hero-cta-arrow-right {
+  transform: translateX(4px);
+}
+
+
+
+/* OLD CTA */
 .hero-cta-wrapper {
   margin-top: var(--space-96);
   display: flex;
@@ -120,7 +191,7 @@
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.8s ease 1s,
-              transform 0.8s ease 1s;
+    transform 0.8s ease 1s;
 }
 
 .hero-cta-wrapper.revealed {
@@ -159,6 +230,7 @@
    REDUCED MOTION
    ---------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
+
   .hero-composition,
   .hero-content,
   .hero-cta-wrapper {
@@ -166,40 +238,53 @@
     opacity: 1 !important;
     transform: none !important;
   }
+
+  .hero-name {
+    animation: none !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    color: var(--color-primary-text) !important;
+  }
 }
 
 /* ----------------------------------------------------------------------
    RESPONSIVE ADJUSTMENTS
    ---------------------------------------------------------------------- */
 @media (max-width: 1024px) {
-  .hero-composition {
-    gap: var(--space-48);
-  }
-  
-  .portrait-container {
-    width: 240px;
-    height: 320px;
+  .hero-content {
+    max-width: 60%;
   }
 }
 
 @media (max-width: 768px) {
   .hero-composition {
-    flex-direction: column-reverse; /* Portrait on top on mobile */
-    align-items: flex-start;
-    gap: var(--space-48);
-    text-align: left;
+    min-height: 70vh;
+  }
+
+  .hero-content {
+    max-width: 100%;
   }
 
   .hero-portrait-anchor {
-    transform: none; /* Remove desktop-specific lift on mobile */
-    align-self: flex-start; /* Ensure left alignment */
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+    opacity: 0.35;
   }
 
-  .portrait-container {
-    width: 200px;
-    height: 266px;
+  .hero-portrait-anchor::after {
+    background:
+      linear-gradient(to top, var(--color-page-background) 0%, transparent 40%),
+      linear-gradient(to bottom, var(--color-page-background) 0%, transparent 40%),
+      linear-gradient(to right, var(--color-page-background) 0%, transparent 30%);
   }
-  
+
+  .portrait-image {
+    object-position: top right;
+  }
+
   .hero-cta-wrapper {
     justify-content: flex-start;
     margin-top: var(--space-64);

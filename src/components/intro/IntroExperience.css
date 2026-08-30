@@ -10,7 +10,7 @@
   justify-content: center;
   overflow: hidden;
   background-color: var(--color-page-background);
-  transition: opacity 1s cubic-bezier(0.2, 0, 0, 1) 0.5s;
+  transition: opacity 0.8s cubic-bezier(0.2, 0, 0, 1) 0.3s;
 }
 
 .intro-experience.phase-complete {
@@ -38,10 +38,11 @@
 
 .code-block {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: clamp(15px, 2vw + 5px, 24px);
   color: var(--color-primary-text);
   display: flex;
   flex-direction: column;
-  gap: var(--space-8);
+  gap: var(--space-12);
   padding: var(--space-24);
 }
 
@@ -53,26 +54,26 @@
 
 /* Typing animation */
 .phase-coding .code-line.line-1 {
-  animation: typingReveal 0.6s steps(30, end) forwards;
+  animation: typingReveal 1.0s steps(35, end) forwards;
 }
 
 .phase-coding .code-line.line-2 {
-  animation: typingReveal 0.6s steps(30, end) forwards 0.8s;
+  animation: typingReveal 0.7s steps(25, end) forwards 1.2s;
 }
 
 /* Cursor blinks only during coding phase */
 .cursor {
   display: inline-block;
-  width: 8px;
+  width: 0.55em;
   height: 1.2em;
   background-color: var(--color-primary-text);
   vertical-align: middle;
-  margin-left: 4px;
+  margin-left: 0.2em;
   opacity: 0;
 }
 
 .phase-coding .code-line.line-2 .cursor {
-  animation: blink 0.8s step-end infinite 0.8s;
+  animation: blink 0.8s step-end infinite 1.2s;
 }
 
 /* Code recedes and fades when transitioning */
@@ -186,9 +187,5 @@
   .portrait-container {
     width: 220px;
     height: 293px; /* Keep 3:4 aspect ratio */
-  }
-  
-  .code-block {
-    font-size: var(--text-metadata);
   }
 }
